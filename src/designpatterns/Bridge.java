@@ -27,16 +27,6 @@ public class Bridge extends DesignPattern {
     }
 
     @Override
-    public void addInstance() {
-        this.instances++;
-    }
-
-    @Override
-    public int getInstaces() {
-        return this.instances;
-    }
-
-    @Override
     public void countInstaces(Element element) {
         List<Element> elements = element.getChildren();
         for (Element e : elements) {
@@ -68,12 +58,12 @@ public class Bridge extends DesignPattern {
         return element;
     }
 
-    public void addAbstraction(String abstraction) {
+    private void addAbstraction(String abstraction) {
         AbstractionBridge abstractionBridge = new AbstractionBridge(abstraction);
         this.abstraction.add(abstractionBridge);
     }
 
-    public void addImplementor(String implementor) {
+    private void addImplementor(String implementor) {
         Implementor implementorBridge = new Implementor(implementor);
         this.implementor.add(implementorBridge);
     }

@@ -29,16 +29,6 @@ public class Composite extends DesignPattern {
     }
 
     @Override
-    public void addInstance() {
-        this.instances++;
-    }
-
-    @Override
-    public int getInstaces() {
-        return this.instances;
-    }
-
-    @Override
     public void countInstaces(Element element) {
         List<Element> elements = element.getChildren();
         for (Element e : elements) {
@@ -70,22 +60,22 @@ public class Composite extends DesignPattern {
         return element;
     }
 
-    public void addComponetUpperCase(String component) {
+    private void addComponetUpperCase(String component) {
         Type newComponent = new ComponentComposite(component);
         this.components.add((ComponentComposite) newComponent);
     }
 
-    public void addComposite(String composite) {
+    private void addComposite(String composite) {
         CompositeRole newComposite = new CompositeRole(composite);
         this.components.get(instances - 1).setComposite(newComposite);
     }
 
-    public void addComponenteLowerCase(String component, String rolesDesignPattern) {
+    private void addComponenteLowerCase(String component, String rolesDesignPattern) {
         Statement newAttribute = new Attribute(component, rolesDesignPattern);
         this.components.get(instances - 1).getComposite().setAttribute((Attribute) newAttribute);
     }
 
-    public void addOperation(String operation, String rolesDesignPattern) {
+    private void addOperation(String operation, String rolesDesignPattern) {
         Statement newMethod = new Method(operation, rolesDesignPattern);
         this.components.get(instances - 1).getComposite().addOperation((Method) newMethod);
     }

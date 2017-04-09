@@ -25,16 +25,6 @@ public class AdapterCommand extends DesignPattern {
     }
 
     @Override
-    public void addInstance() {
-        this.instances++;
-    }
-
-    @Override
-    public int getInstaces() {
-        return this.instances;
-    }
-
-    @Override
     public void countInstaces(Element element) {
         List<Element> elements = element.getChildren();
         for (Element e : elements) {
@@ -67,7 +57,7 @@ public class AdapterCommand extends DesignPattern {
         return element;
     }
 
-    public int addAdapteeReceiver(String adapteeReceiver, AdapterConcrete adapterConcrete) {
+    private int addAdapteeReceiver(String adapteeReceiver, AdapterConcrete adapterConcrete) {
         AdapteeReceiver adapteeReceiverAttribute = new AdapteeReceiver(adapteeReceiver);
         int index = 0;
         for (AdapteeReceiver adaptee : this.adapteeReceivers) {
@@ -90,7 +80,7 @@ public class AdapterCommand extends DesignPattern {
         }
     }
 
-    public AdapterConcrete addAdapterConcreteAttribute(String adapterConcrete, int indexAdapteeReceiver) {
+    private AdapterConcrete addAdapterConcreteAttribute(String adapterConcrete, int indexAdapteeReceiver) {
         AdapterConcrete newAdapterConcrete = new AdapterConcrete(adapterConcrete);
         if (indexAdapteeReceiver != -1) {
             AdapteeReceiver adapteeReceiver = this.adapteeReceivers.get(indexAdapteeReceiver);
