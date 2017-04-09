@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author bruno
  */
-public class Visitor extends Type{
+public class VisitorRole extends Type{
 
     private List<ConcreteElement> concretElements;
     
-    public Visitor(String completeName) {
+    public VisitorRole(String completeName) {
         super(completeName);
         this.concretElements = new ArrayList<>();
     }
