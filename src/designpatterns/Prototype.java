@@ -12,12 +12,8 @@ import java.util.List;
 import org.jdom2.Element;
 import designpatterns.structure.Attribute;
 import designpatterns.structure.Method;
-import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
 import designpatterns.structure.Type;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  *

@@ -9,11 +9,6 @@ import designpatterns.roles.Creator;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
-import designpatterns.structure.Method;
-import designpatterns.structure.MethodBadSmell;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  *

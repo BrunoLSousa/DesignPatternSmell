@@ -8,14 +8,9 @@ package designpatterns;
 import designpatterns.roles.ObserverRole;
 import designpatterns.roles.SubjectObserver;
 import designpatterns.structure.Method;
-import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
-import designpatterns.structure.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import org.jdom2.Element;
 
 /**
