@@ -16,12 +16,12 @@ import java.util.List;
  *
  * @author bruno
  */
-public class AdapterConcreteAttribute extends Type{
+public class AdapterConcrete extends Type{
 
     private List<Attribute> attributes;
     private List<Method> request;
     
-    public AdapterConcreteAttribute(String completeName) {
+    public AdapterConcrete(String completeName) {
         super(completeName);
         this.attributes = new ArrayList<>();
         this.request = new ArrayList<>();

@@ -13,24 +13,24 @@ import java.util.List;
  *
  * @author bruno
  */
-public class AdapteeReceiverAttribute extends Type{
+public class AdapteeReceiver extends Type{
 
-    private List<AdapterConcreteAttribute> adapterConcretes;
+    private List<AdapterConcrete> adapterConcretes;
     
-    public AdapteeReceiverAttribute(String completeName) {
+    public AdapteeReceiver(String completeName) {
         super(completeName);
         this.adapterConcretes = new ArrayList<>();
     }
     
-    public List<AdapterConcreteAttribute> getAdapterConcretes(){
+    public List<AdapterConcrete> getAdapterConcretes(){
         return this.adapterConcretes;
     }
     
-    public void addAdapterConcrete(AdapterConcreteAttribute adapterConcrete){
+    public void addAdapterConcrete(AdapterConcrete adapterConcrete){
         this.adapterConcretes.add(adapterConcrete);
     }
     
-    public AdapterConcreteAttribute lastAdapterConcrete(){
+    public AdapterConcrete lastAdapterConcrete(){
         int size = this.adapterConcretes.size();
         return this.adapterConcretes.get(size - 1);
     }
