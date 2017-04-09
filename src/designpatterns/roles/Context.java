@@ -41,5 +41,10 @@ public class Context extends Type{
     public void addRequest(Method method){
         this.request.add(method);
     }
+
+    @Override
+    public String toString() {
+        return "Context";
+    }
     
 }
