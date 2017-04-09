@@ -36,5 +36,10 @@ public class AbstractTemplateMethod extends Type{
         Statement newFactoryMethod = new Method(templateMethod, roleDesignPattern);
         this.templateMethods.add((Method) newFactoryMethod);
     }
+
+    @Override
+    public String toString() {
+        return "Abstract Class";
+    }
     
 }
