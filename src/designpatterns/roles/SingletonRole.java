@@ -34,5 +34,10 @@ public class SingletonRole extends Type{
     public void addUniqueInstance(Attribute uniqueInstance){
         this.uniqueInstances.add(uniqueInstance);
     }
+
+    @Override
+    public String toString() {
+        return "Singleton";
+    }
     
 }
