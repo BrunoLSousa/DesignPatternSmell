@@ -15,26 +15,26 @@ import java.util.List;
  */
 public class ComponentDecorator extends Type{
     
-    private List<Decorator> decorators;
+    private List<DecoratorRole> decorators;
     
     public ComponentDecorator(String completeName) {
         super(completeName);
         this.decorators = new ArrayList<>();
     }
     
-    public List<Decorator> getDecorators(){
+    public List<DecoratorRole> getDecorators(){
         return this.decorators;
     }
     
-    public Decorator getDecoratorByIndex(int index){
+    public DecoratorRole getDecoratorByIndex(int index){
         return this.decorators.get(index);
     }
     
-    public void addDecorator(Decorator decorator){
+    public void addDecorator(DecoratorRole decorator){
         this.decorators.add(decorator);
     }
     
-    public Decorator lastDecorator(){
+    public DecoratorRole lastDecorator(){
         int size = this.decorators.size();
         return this.decorators.get(size - 1);
     }

@@ -15,12 +15,12 @@ import java.util.List;
  *
  * @author bruno
  */
-public class Decorator extends Type{
+public class DecoratorRole extends Type{
 
     private List<Attribute> components;
     private List<Method> operations;
     
-    public Decorator(String completeName) {
+    public DecoratorRole(String completeName) {
         super(completeName);
         this.components = new ArrayList<>();
         this.operations = new ArrayList<>();
