@@ -26,4 +26,10 @@ public class ComponentComposite extends Type{
     public void setComposite(Composite composite){
         this.composite = composite;
     }
+
+    @Override
+    public String toString() {
+        return "Component";
+    }
+    
 }
