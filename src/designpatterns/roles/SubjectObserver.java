@@ -14,12 +14,12 @@ import java.util.List;
  *
  * @author bruno
  */
-public class Subject extends Type{
+public class SubjectObserver extends Type{
     
     private List<ObserverRole> observers;
     private List<Method> notify;
 
-    public Subject(String completeName) {
+    public SubjectObserver(String completeName) {
         super(completeName);
         this.observers = new ArrayList<>();
         this.notify = new ArrayList<>();

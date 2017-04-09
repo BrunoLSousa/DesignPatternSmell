@@ -13,11 +13,11 @@ import java.util.List;
  *
  * @author bruno
  */
-public class RealSubject extends Type{
+public class RealSubjectProxy extends Type{
 
     private List<ProxyRole> proxyAttribute;
     
-    public RealSubject(String completeName) {
+    public RealSubjectProxy(String completeName) {
         super(completeName);
         this.proxyAttribute = new ArrayList<>();
     }
