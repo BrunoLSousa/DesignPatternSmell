@@ -35,13 +35,13 @@ public class AdapterConcreteAttribute extends Type{
         return this.request;
     }
     
-    public void addAttribute(String attribute){
-        Statement newAttribute = new Attribute(attribute);
+    public void addAttribute(String attribute, String role){
+        Statement newAttribute = new Attribute(attribute, role);
         this.attributes.add((Attribute) newAttribute);
     }
     
-    public void addRequest(String request){
-        Statement newRequest = new Method(request);
+    public void addRequest(String request, String role){
+        Statement newRequest = new Method(request, role);
         this.request.add((Method) newRequest);
     }
 

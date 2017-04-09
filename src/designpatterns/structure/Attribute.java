@@ -11,11 +11,12 @@ package designpatterns.structure;
  */
 public class Attribute extends Statement{
 
-    public Attribute() {
-        
-    }
+//    public Attribute() {
+//        
+//    }
     
-    public Attribute(String completeName) {
+    public Attribute(String completeName, String roleDesignPattern) {
+        super(roleDesignPattern);
         convertAttributes(completeName);
     }
     

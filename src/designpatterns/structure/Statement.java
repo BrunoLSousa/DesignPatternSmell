@@ -12,12 +12,13 @@ package designpatterns.structure;
 public abstract class Statement {
     protected String type;
     protected String name;
+    private String roleDesignPattern;
     
-    public Statement(){
-        
+    public Statement(String roleDesignPattern){
+        this.roleDesignPattern = roleDesignPattern;
     }
     
-    public Statement(String name, String type) {
+    public Statement(String name, String type, String roleDesignPattern) {
         this.name = name;
         this.type = type;
     }
@@ -28,6 +29,10 @@ public abstract class Statement {
 
     public String getType() {
         return this.type;
+    }
+    
+    public String getRoleDesignPattern(){
+        return this.roleDesignPattern;
     }
         
 }

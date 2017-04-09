@@ -16,16 +16,16 @@ public class Method extends Statement {
 
     private List<String> params;
 
-    public Method() {
-
-    }
+//    public Method() {
+//
+//    }
     
-    public Method(String name, String type){
-        this.name = name;
-        this.type = type;
-    }
+//    public Method(String name, String type, String roleDesignPattern){
+//        super(name, type, roleDesignPattern);
+//    }
 
-    public Method(String completeName) {
+    public Method(String completeName, String roleDesignPattern) {
+        super(roleDesignPattern);
         this.params = new ArrayList<>();
         convertAttributes(completeName);
     }
