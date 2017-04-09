@@ -13,17 +13,17 @@ import designpatterns.structure.Type;
  */
 public class ComponentComposite extends Type{
 
-    private Composite composite;
+    private CompositeRole composite;
     
     public ComponentComposite(String completeName) {
         super(completeName);
     }
     
-    public Composite getComposite(){
+    public CompositeRole getComposite(){
         return this.composite;
     }
     
-    public void setComposite(Composite composite){
+    public void setComposite(CompositeRole composite){
         this.composite = composite;
     }
 

@@ -15,12 +15,12 @@ import java.util.List;
  *
  * @author bruno
  */
-public class Composite extends Type{
+public class CompositeRole extends Type{
 
     private Attribute component;
     private List<Method> operations;
     
-    public Composite(String completeName) {
+    public CompositeRole(String completeName) {
         super(completeName);
         this.operations = new ArrayList<>();
     }
