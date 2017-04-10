@@ -389,7 +389,7 @@ public class DPSForm extends javax.swing.JFrame {
         if (!xmlFiles.isEmpty() && !jTextFieldProjectName.getText().isEmpty()) {
 //            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
         } else {
-//            JOptionPane.showMessageDialog(this, this.subject.getLanguage().getMessageWarningDoneDesignPatterns(), this.subject.getLanguage().getMessageTitleWarning(), JOptionPane.WARNING_MESSAGE, null);
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningXMLParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonConvertActionPerformed
 
