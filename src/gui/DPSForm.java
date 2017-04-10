@@ -31,7 +31,6 @@ public class DPSForm extends javax.swing.JFrame {
      */
     public DPSForm() {
         this.xmlFiles = new LinkedHashSet<>();
-        this.csvFiles = new LinkedHashSet<>();
         this.data = Data.getInstance();
         this.properties = PropertiesManager.getInstance().getProperties();
         initComponents();
@@ -178,12 +177,6 @@ public class DPSForm extends javax.swing.JFrame {
 
         jLabelProjectName.setText(this.properties.getProperty("labelProject"));
 
-        jTextFieldProjectName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldProjectNameActionPerformed(evt);
-            }
-        });
-
         jLabelXmlFiles.setText(this.properties.getProperty("labelFileXML"));
 
         jButtonSelectXml.setText(this.properties.getProperty("buttonSelectXML"));
@@ -314,46 +307,38 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jButtonSelectCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectCSVActionPerformed
         JFileChooser c = new JFileChooser();
-        c.setMultiSelectionEnabled(true);
-        FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("csv files (*.csv)", "csv");
-        c.setFileFilter(xmlfilter);
+        FileNameExtensionFilter csvfilter = new FileNameExtensionFilter("csv files (*.csv)", "csv");
+        c.setFileFilter(csvfilter);
         c.showOpenDialog(this);//abre o arquivo
-        File[] files = c.getSelectedFiles();//abre o arquivo selecionado
+        File file = c.getSelectedFile();//abre o arquivo selecionado
 
         try {
-            if (files != null) {
+            if (file != null && file.getName().contains("csv")) {
                 long length = 0;
-                for (File f : files) {
-                    if (f.getName().contains("csv")) {
-                        this.csvFiles.add(f);
-                        length += f.length();
-                        Path path = Paths.get(f.getName());
-                        if (this.jTextAreaCsvFile.getText().equals("")) {
-                            this.jTextAreaCsvFile.setText(path.toString());
-                        } else {
-                            this.jTextAreaCsvFile.setText(this.jTextAreaCsvFile.getText() + "\n" + path.toString());
-                        }
-                    }
-                }
+                this.csvFile = file;
+                length += file.length();
+                Path path = Paths.get(file.getName());
+                this.jTextAreaCsvFile.setText(path.toString());
             }
 
         } catch (Exception e1) {
-            JOptionPane.showMessageDialog(this, "Não obteve o carregamento do arquivo");
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorCSVParser"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonSelectCSVActionPerformed
 
     private void jButtonIntersectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntersectionActionPerformed
-       //This button actives the intersection between design patterns and bad smells artifacts.
+        if (csvFile != null && !jTextFieldBadSmellName.getText().isEmpty()) {
+//            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
+            JOptionPane.showMessageDialog(this, "ok");
+        } else {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningCSVParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonIntersectionActionPerformed
 
     private void jButtonCleanCsvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCleanCsvActionPerformed
-        this.csvFiles.clear();
+        this.csvFile = null;
         this.jTextAreaCsvFile.setText("");
     }//GEN-LAST:event_jButtonCleanCsvActionPerformed
-
-    private void jTextFieldProjectNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProjectNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldProjectNameActionPerformed
 
     private void jButtonSelectXmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectXmlActionPerformed
         JFileChooser c = new JFileChooser();
@@ -382,7 +367,7 @@ public class DPSForm extends javax.swing.JFrame {
             }
 
         } catch (Exception e1) {
-            JOptionPane.showMessageDialog(this, "Não obteve o carregamento do arquivo");
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorXMLParser"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonSelectXmlActionPerformed
 
@@ -415,7 +400,7 @@ public class DPSForm extends javax.swing.JFrame {
     private void clearFields() {
         this.data.clear();
         this.xmlFiles = new LinkedHashSet<>();
-        this.csvFiles = new LinkedHashSet<>();
+        this.csvFile = null;
         this.jTextFieldBadSmellName.setText("");
         this.jTextAreaCsvFile.setText("");
         this.jComboBoxTypeBadSmell.setSelectedIndex(0);
@@ -450,7 +435,7 @@ public class DPSForm extends javax.swing.JFrame {
         this.jButtonCleanXml.setEnabled(!enable);
         this.jButtonConvert.setEnabled(!enable);
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -515,7 +500,7 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldProjectName;
     // End of variables declaration//GEN-END:variables
     private Set<File> xmlFiles;
-    private Set<File> csvFiles;
+    private File csvFile;
     private JDialog loadingDialog = new JDialog(this, "", true);
     private JProgressBar progress = new JProgressBar(0, 0);
     private Data data;
