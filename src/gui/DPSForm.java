@@ -82,12 +82,6 @@ public class DPSForm extends javax.swing.JFrame {
 
         jLabelBadSmellName.setText(this.properties.getProperty("labelBadSmell"));
 
-        jTextFieldBadSmellName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldBadSmellNameActionPerformed(evt);
-            }
-        });
-
         jLabelCsvFile.setText(this.properties.getProperty("labelCSVFile"));
 
         jButtonSelectCSV.setText(this.properties.getProperty("buttonSelectCSV"));
@@ -301,16 +295,12 @@ public class DPSForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldBadSmellNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBadSmellNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldBadSmellNameActionPerformed
-
     private void jButtonSelectCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelectCSVActionPerformed
         JFileChooser c = new JFileChooser();
         FileNameExtensionFilter csvfilter = new FileNameExtensionFilter("csv files (*.csv)", "csv");
         c.setFileFilter(csvfilter);
-        c.showOpenDialog(this);//abre o arquivo
-        File file = c.getSelectedFile();//abre o arquivo selecionado
+        c.showOpenDialog(this);
+        File file = c.getSelectedFile();
 
         try {
             if (file != null && file.getName().contains("csv")) {
@@ -344,10 +334,10 @@ public class DPSForm extends javax.swing.JFrame {
         JFileChooser c = new JFileChooser();
         c.setMultiSelectionEnabled(true);
         FileNameExtensionFilter xmlfilter = new FileNameExtensionFilter("xml files (*.xml)", "xml");
-        c.setDialogTitle("Open schedule file");// set selected filter
+        c.setDialogTitle("Open schedule file");
         c.setFileFilter(xmlfilter);
-        c.showOpenDialog(this);//abre o arquivo
-        File[] files = c.getSelectedFiles();//abre o arquivo selecionado
+        c.showOpenDialog(this);
+        File[] files = c.getSelectedFiles();
 
         try {
             if (files != null) {
