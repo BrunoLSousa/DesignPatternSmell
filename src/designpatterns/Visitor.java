@@ -7,6 +7,9 @@ package designpatterns;
 
 import designpatterns.roles.ConcreteElement;
 import designpatterns.roles.VisitorRole;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -15,19 +18,19 @@ import org.jdom2.Element;
  *
  * @author bruno
  */
-public class Visitor extends DesignPattern{
+public class Visitor extends DesignPattern {
 
     private List<VisitorRole> visitors;
-    
+
     public Visitor(String name) {
         super(name);
         this.visitors = new ArrayList<>();
     }
-    
+
     @Override
     public void countInstaces(Element element) {
         List<Element> elements = element.getChildren();
-        for(Element e : elements){
+        for (Element e : elements) {
             addInstance();
         }
     }
@@ -58,8 +61,8 @@ public class Visitor extends DesignPattern{
     private int addVisitor(String visitor, ConcreteElement concreteElement) {
         VisitorRole newVisitor = new VisitorRole(visitor);
         int index = 0;
-        for(VisitorRole v : this.visitors){
-            if(v.getName().equals(newVisitor.getName()) && v.getPack().equals(newVisitor.getPack())){
+        for (VisitorRole v : this.visitors) {
+            if (v.getName().equals(newVisitor.getName()) && v.getPack().equals(newVisitor.getPack())) {
                 addConcreteElementException(concreteElement, index);
                 return index;
             }
@@ -70,7 +73,7 @@ public class Visitor extends DesignPattern{
         addConcreteElementException(concreteElement, index);
         return index;
     }
-    
+
     private void addConcreteElementException(ConcreteElement concreteElement, int indexVisitor) {
         if (concreteElement != null) {
             VisitorRole visitor = this.visitors.get(indexVisitor);
@@ -80,10 +83,39 @@ public class Visitor extends DesignPattern{
 
     private ConcreteElement addConcreteElement(String concreteElement, int indexVisitor) {
         ConcreteElement concreteElementAttribute = new ConcreteElement(concreteElement);
-        if(indexVisitor != -1){
+        if (indexVisitor != -1) {
             this.visitors.get(indexVisitor).addConcretElement(concreteElementAttribute);
         }
         return concreteElementAttribute;
     }
-    
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (VisitorRole visitor : this.visitors) {
+            if (visitor.isEquals(type)) {
+                return visitor;
+            }
+            for (ConcreteElement concreteElement : visitor.getConcretElements()) {
+                if (concreteElement.isEquals(type)) {
+                    return concreteElement;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (VisitorRole visitor : this.visitors) {
+            for (ConcreteElement concreteElement : visitor.getConcretElements()) {
+                for (Method accept : concreteElement.getAccepts()) {
+                    if (method.isEquals(accept, concreteElement)) {
+                        return accept;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 }

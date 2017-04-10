@@ -5,6 +5,9 @@
  */
 package designpatterns;
 
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import org.jdom2.Element;
 
 /**
@@ -55,5 +58,9 @@ public abstract class DesignPattern {
     public abstract void countInstaces(Element element);
     
     public abstract Element convertElement(Element element); 
+    
+    public abstract Type verifyIfTypeExist(Type type);
+    
+    public abstract Method verifyIfMethodExist(MethodBadSmell method);
     
 }

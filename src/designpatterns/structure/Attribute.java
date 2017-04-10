@@ -10,10 +10,6 @@ package designpatterns.structure;
  * @author bruno
  */
 public class Attribute extends Statement{
-
-//    public Attribute() {
-//        
-//    }
     
     public Attribute(String completeName, String roleDesignPattern) {
         super(roleDesignPattern);

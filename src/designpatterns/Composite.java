@@ -9,6 +9,7 @@ import designpatterns.roles.ComponentComposite;
 import designpatterns.roles.CompositeRole;
 import designpatterns.structure.Attribute;
 import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
 import designpatterns.structure.Type;
 import java.util.ArrayList;
@@ -78,6 +79,30 @@ public class Composite extends DesignPattern {
     private void addOperation(String operation, String rolesDesignPattern) {
         Statement newMethod = new Method(operation, rolesDesignPattern);
         this.components.get(instances - 1).getComposite().addOperation((Method) newMethod);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (ComponentComposite component : this.components) {
+            if (component.isEquals(type)) {
+                return component;
+            } else if (component.getComposite().isEquals(type)) {
+                return component.getComposite();
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (ComponentComposite component : this.components) {
+            for (Method operation : component.getComposite().getOperations()) {
+                if (method.isEquals(operation, component.getComposite())) {
+                    return operation;
+                }
+            }
+        }
+        return null;
     }
 
 }

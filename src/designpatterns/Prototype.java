@@ -12,6 +12,7 @@ import java.util.List;
 import org.jdom2.Element;
 import designpatterns.structure.Attribute;
 import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
 import designpatterns.structure.Type;
 
@@ -105,6 +106,35 @@ public class Prototype extends DesignPattern {
         PrototypeRole prototype = this.prototypes.get(indexPrototype);
         Client client = prototype.lastClient();
         client.addOperation((Method) newOperation);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (PrototypeRole prototype : this.prototypes) {
+            if (prototype.isEquals(type)) {
+                return prototype;
+            }
+            for (Client client : prototype.getClients()) {
+                if (client.isEquals(type)) {
+                    return client;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (PrototypeRole prototype : this.prototypes) {
+            for (Client client : prototype.getClients()) {
+                for (Method operation : client.getOperations()) {
+                    if (method.isEquals(operation, client)) {
+                        return operation;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 }

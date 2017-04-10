@@ -7,6 +7,9 @@ package designpatterns;
 
 import designpatterns.roles.AbstractionBridge;
 import designpatterns.roles.Implementor;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -66,6 +69,33 @@ public class Bridge extends DesignPattern {
     private void addImplementor(String implementor) {
         Implementor implementorBridge = new Implementor(implementor);
         this.implementor.add(implementorBridge);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (AbstractionBridge abstractionBridge : this.abstraction) {
+            if (abstractionBridge.isEquals(type)) {
+                return abstractionBridge;
+            }
+        }
+        for (Type implementorBridge : this.implementor) {
+            if (implementorBridge.isEquals(type)) {
+                return implementorBridge;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (AbstractionBridge abstractionBridge : this.abstraction) {
+            for (Method operation : abstractionBridge.getOperations()) {
+                if (method.isEquals(operation, abstractionBridge)) {
+                    return operation;
+                }
+            }
+        }
+        return null;
     }
 
 }

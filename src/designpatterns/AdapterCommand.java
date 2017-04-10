@@ -7,6 +7,9 @@ package designpatterns;
 
 import designpatterns.roles.AdapteeReceiver;
 import designpatterns.roles.AdapterConcrete;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -87,6 +90,35 @@ public class AdapterCommand extends DesignPattern {
             adapteeReceiver.addAdapterConcrete(newAdapterConcrete);
         }
         return newAdapterConcrete;
-    }    
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (AdapteeReceiver adapteeReceiver : this.adapteeReceivers) {
+            if (adapteeReceiver.isEquals(type)) {
+                return adapteeReceiver;
+            }
+            for (AdapterConcrete adapterConcrete : adapteeReceiver.getAdapterConcretes()) {
+                if (adapterConcrete.isEquals(type)) {
+                    return adapterConcrete;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (AdapteeReceiver adapteeReceiver : this.adapteeReceivers) {
+            for (AdapterConcrete adapterConcrete : adapteeReceiver.getAdapterConcretes()) {
+                for (Method request : adapterConcrete.getRequest()) {
+                    if (method.isEquals(request, adapterConcrete)) {
+                        return  request;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 
 }

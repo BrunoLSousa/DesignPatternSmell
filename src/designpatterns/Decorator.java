@@ -9,6 +9,7 @@ import designpatterns.roles.ComponentDecorator;
 import designpatterns.roles.DecoratorRole;
 import designpatterns.structure.Attribute;
 import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
 import designpatterns.structure.Type;
 import java.util.ArrayList;
@@ -90,6 +91,35 @@ public class Decorator extends DesignPattern {
         Statement newOperation = new Method(operation, roleDesignPattern);
         DecoratorRole decoratorAttribute = this.decorators.get(indexDecorator).lastDecorator();
         decoratorAttribute.addOperation((Method) newOperation);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (ComponentDecorator component : this.decorators) {
+            if (component.isEquals(type)) {
+                return component;
+            }
+            for (DecoratorRole decorator : component.getDecorators()) {
+                if (decorator.isEquals(type)) {
+                    return decorator;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (ComponentDecorator component : this.decorators) {
+            for (DecoratorRole decorator : component.getDecorators()) {
+                for (Method operation : decorator.getOperations()) {
+                    if (method.isEquals(operation, decorator)) {
+                        return operation;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 }

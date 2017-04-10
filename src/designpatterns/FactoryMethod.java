@@ -6,6 +6,9 @@
 package designpatterns;
 
 import designpatterns.roles.Creator;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -53,6 +56,28 @@ public class FactoryMethod extends DesignPattern {
     private void addCreator(String creator) {
         Creator newCreator = new Creator(creator);
         this.creators.add((Creator) newCreator);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (Creator creator : this.creators) {
+            if (creator.isEquals(type)) {
+                return creator;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (Creator creator : this.creators) {
+            for (Method factoryMethod : creator.getFactoryMethods()) {
+                    if (method.isEquals(factoryMethod, creator)) {
+                        return factoryMethod;
+                    }
+            }
+        }
+        return null;
     }
 
 }

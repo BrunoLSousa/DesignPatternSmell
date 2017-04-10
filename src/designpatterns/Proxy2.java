@@ -8,6 +8,9 @@ package designpatterns;
 import designpatterns.roles.ProxyRole;
 import designpatterns.roles.RealSubjectProxy2;
 import designpatterns.roles.SubjectProxy2;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -63,5 +66,37 @@ public class Proxy2 extends DesignPattern {
         }
         return element;
     }
-    
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (RealSubjectProxy2 realSubject : this.realSubjects) {
+            if (realSubject.isEquals(type)) {
+                return realSubject;
+            }
+        }
+        for (SubjectProxy2 subject : this.subjects) {
+            if (subject.isEquals(type)) {
+                return subject;
+            }
+        }
+        for (ProxyRole proxy : this.proxies) {
+            if (proxy.isEquals(type)) {
+                return proxy;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (ProxyRole proxyAttribute : this.proxies) {
+            for (Method request : proxyAttribute.getRequest()) {
+                if (method.isEquals(request, proxyAttribute)) {
+                    return request;
+                }
+            }
+        }
+        return null;
+    }
+
 }

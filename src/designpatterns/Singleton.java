@@ -7,6 +7,8 @@ package designpatterns;
 
 import designpatterns.roles.SingletonRole;
 import designpatterns.structure.Attribute;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
 import designpatterns.structure.Type;
 import java.util.ArrayList;
@@ -70,6 +72,21 @@ public class Singleton extends DesignPattern {
 
     private SingletonRole getSingletonByIndex(int index) {
         return this.singletons.get(index);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (SingletonRole singleton : this.singletons) {
+            if (singleton.isEquals(type)) {
+                return singleton;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        return null;
     }
 
 }

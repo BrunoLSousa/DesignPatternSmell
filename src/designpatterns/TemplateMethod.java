@@ -6,6 +6,9 @@
 package designpatterns;
 
 import designpatterns.roles.AbstractTemplateMethod;
+import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -53,6 +56,28 @@ public class TemplateMethod extends DesignPattern {
     private void addAbstractClass(String abstractClass) {
         AbstractTemplateMethod newTemplateMethod = new AbstractTemplateMethod(abstractClass);
         this.templateMethods.add(newTemplateMethod);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (AbstractTemplateMethod stateStrategy : this.templateMethods) {
+            if (stateStrategy.isEquals(type)) {
+                return stateStrategy;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (AbstractTemplateMethod abstractTemplateMethod : this.templateMethods) {
+            for (Method templateMethod : abstractTemplateMethod.getTemplateMethods()) {
+                if (method.isEquals(templateMethod, abstractTemplateMethod)) {
+                    return templateMethod;
+                }
+            }
+        }
+        return null;
     }
 
 }

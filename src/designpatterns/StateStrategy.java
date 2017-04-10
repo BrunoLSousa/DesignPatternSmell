@@ -9,7 +9,9 @@ import designpatterns.roles.Context;
 import designpatterns.roles.StateStrategyRole;
 import designpatterns.structure.Attribute;
 import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -18,19 +20,19 @@ import org.jdom2.Element;
  *
  * @author bruno
  */
-public class StateStrategy extends DesignPattern{
+public class StateStrategy extends DesignPattern {
 
     private List<StateStrategyRole> statesStrategies;
-    
+
     public StateStrategy(String name) {
         super(name);
         this.statesStrategies = new ArrayList<>();
     }
-    
+
     @Override
     public void countInstaces(Element element) {
         List<Element> elements = element.getChildren();
-        for(Element e : elements){
+        for (Element e : elements) {
             addInstance();
         }
     }
@@ -62,7 +64,7 @@ public class StateStrategy extends DesignPattern{
 
     private Context addContext(String context, int indexStateStrategy) {
         Context newContext = new Context(context);
-        if(indexStateStrategy != -1){
+        if (indexStateStrategy != -1) {
             this.statesStrategies.get(indexStateStrategy).addStateStrategy(newContext);
         }
         return newContext;
@@ -71,8 +73,8 @@ public class StateStrategy extends DesignPattern{
     private int addStateStrategyUpperCase(String stateStrategy, Context context) {
         StateStrategyRole newStateStrategy = new StateStrategyRole(stateStrategy);
         int index = 0;
-        for(StateStrategyRole s: this.statesStrategies){
-            if(s.getName().equals(newStateStrategy.getName()) && s.getPack().equals(newStateStrategy.getPack())){
+        for (StateStrategyRole s : this.statesStrategies) {
+            if (s.getName().equals(newStateStrategy.getName()) && s.getPack().equals(newStateStrategy.getPack())) {
                 s.addStateStrategy(context);
                 return index;
             }
@@ -95,5 +97,34 @@ public class StateStrategy extends DesignPattern{
         Context context = this.statesStrategies.get(indexStateStrategy).lastContextStateStrategy();
         context.addRequest((Method) newRequest);
     }
-    
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (StateStrategyRole stateStrategy : this.statesStrategies) {
+            if (stateStrategy.isEquals(type)) {
+                return stateStrategy;
+            }
+            for (Context context : stateStrategy.getContextStateStrategy()) {
+                if (context.isEquals(type)) {
+                    return context;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (StateStrategyRole stateStrategy : this.statesStrategies) {
+            for (Context contextStateStrategy : stateStrategy.getContextStateStrategy()) {
+                for (Method request : contextStateStrategy.getRequests()) {
+                    if (method.isEquals(request, contextStateStrategy)) {
+                        return request;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 }

@@ -8,7 +8,9 @@ package designpatterns;
 import designpatterns.roles.ObserverRole;
 import designpatterns.roles.SubjectObserver;
 import designpatterns.structure.Method;
+import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Statement;
+import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdom2.Element;
@@ -81,6 +83,33 @@ public class Observer extends DesignPattern {
     private void addNotify(String notify, int indexSubject, String roleDesignPattern) {
         Statement newNotify = new Method(notify, roleDesignPattern);
         this.subjects.get(indexSubject).addNotify((Method) newNotify);
+    }
+
+    @Override
+    public Type verifyIfTypeExist(Type type) {
+        for (SubjectObserver subject : this.subjects) {
+            if (subject.isEquals(type)) {
+                return subject;
+            }
+            for (ObserverRole observer : subject.getObservers()) {
+                if (observer.isEquals(type)) {
+                    return observer;
+                }
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Method verifyIfMethodExist(MethodBadSmell method) {
+        for (SubjectObserver subject : this.subjects) {
+            for (Method notify : subject.getNotify()) {
+                if (method.isEquals(notify, subject)) {
+                    return notify;
+                }
+            }
+        }
+        return null;
     }
 
 }
