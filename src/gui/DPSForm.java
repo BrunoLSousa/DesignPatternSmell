@@ -18,6 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import parser.XMLParser;
 
 /**
  *
@@ -387,7 +388,7 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jButtonConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertActionPerformed
         if (!xmlFiles.isEmpty() && !jTextFieldProjectName.getText().isEmpty()) {
-//            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
+            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningXMLParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
