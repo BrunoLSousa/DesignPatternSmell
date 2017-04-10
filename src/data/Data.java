@@ -56,6 +56,15 @@ public class Data {
         this.methodsBadSmells.add(method);
     }
     
+    public Object badSmellData(){
+        if(!this.typesBadSmells.isEmpty()){
+            return this.typesBadSmells;
+        }else if(!this.methodsBadSmells.isEmpty()){
+            return this.methodsBadSmells;
+        }
+        return null;
+    }
+    
     public void clear(){
         this.designPatterns.clear();
         this.typesBadSmells.clear();
