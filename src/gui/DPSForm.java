@@ -433,7 +433,7 @@ public class DPSForm extends javax.swing.JFrame {
 
     public void enablePanel(boolean enable) {
         enableCSVPanel(enable);
-        enableXMLPanel(!enable);
+        enableXMLPanel(enable);
     }
     
     private void enableXMLPanel(boolean enable){
