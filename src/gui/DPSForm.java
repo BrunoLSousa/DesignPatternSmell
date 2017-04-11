@@ -73,9 +73,12 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuFile = new javax.swing.JMenu();
         jMenuNew = new javax.swing.JMenuItem();
         jMenuNewCSV = new javax.swing.JMenuItem();
-        jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuExit = new javax.swing.JMenuItem();
+        jMenuResults = new javax.swing.JMenu();
+        jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(null);
@@ -263,14 +266,6 @@ public class DPSForm extends javax.swing.JFrame {
             }
         });
         jMenuFile.add(jMenuNewCSV);
-
-        jMenuInstancesDesignPattern.setText(this.properties.getProperty("submenu1_3"));
-        jMenuInstancesDesignPattern.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuInstancesDesignPatternActionPerformed(evt);
-            }
-        });
-        jMenuFile.add(jMenuInstancesDesignPattern);
         jMenuFile.add(jSeparator1);
 
         jMenuExit.setText(this.properties.getProperty("submenu1_4"));
@@ -282,6 +277,29 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuFile.add(jMenuExit);
 
         jMenuBar.add(jMenuFile);
+
+        jMenuResults.setText(this.properties.getProperty("menu2"));
+
+        jMenuInstancesDesignPattern.setText(this.properties.getProperty("submenu2_1"));
+        jMenuInstancesDesignPattern.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuInstancesDesignPatternActionPerformed(evt);
+            }
+        });
+        jMenuResults.add(jMenuInstancesDesignPattern);
+
+        jMenuItem1.setText(this.properties.getProperty("submenu2_2"));
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenuResults.add(jMenuItem1);
+
+        jMenuItem2.setText(this.properties.getProperty("submenu2_3"));
+        jMenuResults.add(jMenuItem2);
+
+        jMenuBar.add(jMenuResults);
 
         setJMenuBar(jMenuBar);
 
@@ -406,6 +424,15 @@ public class DPSForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuNewCSVActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        if(!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()){
+            ResultsIntersectionForm screenIntersection = new ResultsIntersectionForm();
+            screenIntersection.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningViewIntersection"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     private void clearFields() {
         this.data.clear();
         this.xmlFiles = new LinkedHashSet<>();
@@ -512,8 +539,11 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuExit;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuNew;
     private javax.swing.JMenuItem jMenuNewCSV;
+    private javax.swing.JMenu jMenuResults;
     private javax.swing.JPanel jPanelBadSmell;
     private javax.swing.JPanel jPanelDesignPattern;
     private javax.swing.JScrollPane jScrollPane1;
