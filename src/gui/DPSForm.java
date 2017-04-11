@@ -400,8 +400,10 @@ public class DPSForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuExitActionPerformed
 
     private void jMenuNewCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNewCSVActionPerformed
-        clearCSVFields();
-        enableCSVPanel(true);
+        if (!this.data.getDesignPatterns().isEmpty()) {
+            clearCSVFields();
+            enableCSVPanel(true);
+        }
     }//GEN-LAST:event_jMenuNewCSVActionPerformed
 
     private void clearFields() {
@@ -435,8 +437,8 @@ public class DPSForm extends javax.swing.JFrame {
         enableCSVPanel(enable);
         enableXMLPanel(enable);
     }
-    
-    private void enableXMLPanel(boolean enable){
+
+    private void enableXMLPanel(boolean enable) {
         this.jLabelProjectName.setEnabled(!enable);
         this.jTextFieldProjectName.setEnabled(!enable);
         this.jLabelXmlFiles.setEnabled(!enable);
@@ -445,8 +447,8 @@ public class DPSForm extends javax.swing.JFrame {
         this.jButtonCleanXml.setEnabled(!enable);
         this.jButtonConvert.setEnabled(!enable);
     }
-    
-    public void enableCSVPanel(boolean enable){
+
+    public void enableCSVPanel(boolean enable) {
         this.jLabelBadSmellName.setEnabled(enable);
         this.jTextFieldBadSmellName.setEnabled(enable);
         this.jLabelTypeBadSmell.setEnabled(enable);
