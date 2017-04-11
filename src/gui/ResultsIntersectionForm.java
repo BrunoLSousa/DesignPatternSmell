@@ -8,9 +8,7 @@ package gui;
 import data.Data;
 import designpatterns.config.PropertiesManager;
 import designpatterns.structure.Method;
-import designpatterns.structure.MethodBadSmell;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -103,7 +101,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         tableResults();
         jScrollPane1.setViewportView(jTableIntersection);
 
-        jButtonExportTable.setText(this.properties.getProperty("buttonExportCSVValues"));
+        jButtonExportTable.setText(this.properties.getProperty("buttonExportCSVValuesIntersection"));
         jButtonExportTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExportTableActionPerformed(evt);

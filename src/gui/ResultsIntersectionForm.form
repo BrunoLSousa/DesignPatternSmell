@@ -200,7 +200,7 @@
         <Component class="javax.swing.JButton" name="jButtonExportTable">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;buttonExportCSVValues&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;buttonExportCSVValuesIntersection&quot;)" type="code"/>
             </Property>
           </Properties>
           <Events>

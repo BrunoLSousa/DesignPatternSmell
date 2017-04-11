@@ -410,7 +410,12 @@ public class DPSForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuNewActionPerformed
 
     private void jMenuInstancesDesignPatternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstancesDesignPatternActionPerformed
-        // TODO add your handling code here:
+        if(!this.data.getDesignPatterns().isEmpty()){
+            DesignPatternsInstancesForm designPatternsInstances = new DesignPatternsInstancesForm();
+            designPatternsInstances.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningInstances"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
+        }
     }//GEN-LAST:event_jMenuInstancesDesignPatternActionPerformed
 
     private void jMenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExitActionPerformed
