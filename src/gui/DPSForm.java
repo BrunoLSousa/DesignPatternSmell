@@ -331,7 +331,6 @@ public class DPSForm extends javax.swing.JFrame {
             this.data.setNameBadSmell(jTextFieldBadSmellName.getText());
             this.data.setTypeBadSmell(jComboBoxTypeBadSmell.getSelectedItem().toString());
             new CSVParser(csvFile, this).start();
-            JOptionPane.showMessageDialog(this, "ok");
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningCSVParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
