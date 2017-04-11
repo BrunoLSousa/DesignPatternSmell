@@ -30,12 +30,14 @@ import javax.swing.SwingUtilities;
 public class IntersectionParser extends Thread{
 
     private Data data;
-    private HashMap<String, Set<Object>> intersection;
+    private HashMap<String, Set<Type>> intersectionType;
+    private HashMap<String, Set<Method>> intersectionMethod;
     private DPSForm screen;
 
     public IntersectionParser(DPSForm screen) {
         this.data = Data.getInstance();
-        initializeMap();
+        initializeMapType();
+        initializeMapMethod();
         this.screen = screen;
     }
     
@@ -103,13 +105,12 @@ public class IntersectionParser extends Thread{
             for (DesignPattern dp : designPatterns) {
                 Type type = dp.verifyIfTypeExist(t);
                 if (type != null) {
-                    intersection.get(dp.getName()).add(type);
-                    break;
+                    intersectionType.get(dp.getName()).add(type);
                 }
             }
             incrementProgress();
         }
-        this.data.setIntersection(intersection);
+        this.data.setIntersectionType(intersectionType);
     }
 
     private void intersectionMethod(List<Object> badSmellList) {
@@ -119,30 +120,46 @@ public class IntersectionParser extends Thread{
             for (DesignPattern dp : designPatterns) {
                 Method method = dp.verifyIfMethodExist(m);
                 if (method != null) {
-                    intersection.get(dp.getName()).add(method);
-                    break;
+                    intersectionMethod.get(dp.getName()).add(method);
                 }
             }
             incrementProgress();
         }
-        this.data.setIntersection(intersection);
+        this.data.setIntersectionMethod(intersectionMethod);
     }
     
-    private void initializeMap(){
-        this.intersection = new HashMap<>();
-        this.intersection.put("(Object)Adapter/Command", new LinkedHashSet<>());
-        this.intersection.put("Bridge", new LinkedHashSet<>());
-        this.intersection.put("Composite", new LinkedHashSet<>());
-        this.intersection.put("Decorator", new LinkedHashSet<>());
-        this.intersection.put("Factory Method", new LinkedHashSet<>());
-        this.intersection.put("Observer", new LinkedHashSet<>());
-        this.intersection.put("Prototype", new LinkedHashSet<>());
-        this.intersection.put("Proxy", new LinkedHashSet<>());
-        this.intersection.put("Proxy2", new LinkedHashSet<>());
-        this.intersection.put("Singleton", new LinkedHashSet<>());
-        this.intersection.put("State-Strategy", new LinkedHashSet<>());
-        this.intersection.put("Template Method", new LinkedHashSet<>());
-        this.intersection.put("Visitor", new LinkedHashSet<>());
+    private void initializeMapType(){
+        this.intersectionType = new HashMap<>();
+        this.intersectionType.put("(Object)Adapter-Command", new LinkedHashSet<Type>());
+        this.intersectionType.put("Bridge", new LinkedHashSet<Type>());
+        this.intersectionType.put("Composite", new LinkedHashSet<Type>());
+        this.intersectionType.put("Decorator", new LinkedHashSet<Type>());
+        this.intersectionType.put("Factory Method", new LinkedHashSet<Type>());
+        this.intersectionType.put("Observer", new LinkedHashSet<Type>());
+        this.intersectionType.put("Prototype", new LinkedHashSet<Type>());
+        this.intersectionType.put("Proxy", new LinkedHashSet<Type>());
+        this.intersectionType.put("Proxy2", new LinkedHashSet<Type>());
+        this.intersectionType.put("Singleton", new LinkedHashSet<Type>());
+        this.intersectionType.put("State-Strategy", new LinkedHashSet<Type>());
+        this.intersectionType.put("Template Method", new LinkedHashSet<Type>());
+        this.intersectionType.put("Visitor", new LinkedHashSet<Type>());
+    }
+    
+    private void initializeMapMethod(){
+        this.intersectionMethod = new HashMap<>();
+        this.intersectionMethod.put("(Object)Adapter-Command", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Bridge", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Composite", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Decorator", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Factory Method", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Observer", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Prototype", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Proxy", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Proxy2", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Singleton", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("State-Strategy", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Template Method", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Visitor", new LinkedHashSet<Method>());
     }
     
 }

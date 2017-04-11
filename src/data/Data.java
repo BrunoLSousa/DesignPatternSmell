@@ -6,6 +6,7 @@
 package data;
 
 import designpatterns.DesignPattern;
+import designpatterns.structure.Method;
 import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Type;
 import java.util.ArrayList;
@@ -26,13 +27,15 @@ public class Data {
     private List<Type> typesBadSmells;
     private List<MethodBadSmell> methodsBadSmells;
     private static Data instance;
-    HashMap<String, Set<Object>> instersection;
+    private HashMap<String, Set<Type>> instersectionType;
+    private HashMap<String, Set<Method>> instersectionMethod;
     
     private Data(){
         this.designPatterns = new HashMap<>();
         this.typesBadSmells = new ArrayList<>();
         this.methodsBadSmells = new ArrayList<>();
-        this.instersection = new HashMap<>();
+        this.instersectionType = new HashMap<>();
+        this.instersectionMethod = new HashMap<>();
     }
     
     public static Data getInstance(){
@@ -95,25 +98,35 @@ public class Data {
         return this.typeBadSmell;
     }
     
-    public void setIntersection(HashMap<String, Set<Object>> intersection){
-        this.instersection = intersection;
+    public void setIntersectionType(HashMap<String, Set<Type>> intersection){
+        this.instersectionType = intersection;
     }
     
-    public HashMap<String, Set<Object>> getIntersection(){
-        return this.instersection;
+    public HashMap<String, Set<Type>> getIntersectionType(){
+        return this.instersectionType;
+    }
+    
+    public void setIntersectionMethod(HashMap<String, Set<Method>> intersection){
+        this.instersectionMethod = intersection;
+    }
+    
+    public HashMap<String, Set<Method>> getIntersectionMethod(){
+        return this.instersectionMethod;
     }
     
     public void clear(){
         this.designPatterns.clear();
         this.typesBadSmells.clear();
         this.methodsBadSmells.clear();
-        this.instersection.clear();
+        this.instersectionType.clear();
+        this.instersectionMethod.clear();
     }
     
     public void clearCSV(){
         this.typesBadSmells.clear();
         this.methodsBadSmells.clear();
-        this.instersection.clear();
+        this.instersectionType.clear();
+        this.instersectionMethod.clear();
     }
     
 }

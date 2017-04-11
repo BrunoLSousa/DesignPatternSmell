@@ -16,6 +16,10 @@ public class Method extends Statement {
 
     private List<String> params;
 
+    public Method(String name) {
+        this.name = name;
+    }
+
     public Method(String completeName, String roleDesignPattern) {
         super(roleDesignPattern);
         this.params = new ArrayList<>();

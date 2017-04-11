@@ -13,8 +13,8 @@ public class MethodBadSmell extends Method{
    
     private final Type file;
 
-    public MethodBadSmell(Type file, String name, String type) {
-        super(name, type);
+    public MethodBadSmell(Type file, String name) {
+        super(name);
         this.file = file;
     }
     

@@ -7,8 +7,10 @@ package gui;
 
 import data.Data;
 import designpatterns.config.PropertiesManager;
+import designpatterns.structure.Method;
 import designpatterns.structure.MethodBadSmell;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
@@ -57,20 +59,18 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabelAmountBadSmell = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanelIntersectionData.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAmountIntersectionInstances")));
         jPanelIntersectionData.setToolTipText("");
 
-        jLabel1.setText(this.properties.getProperty("labelProject"));
+        jLabel1.setText(this.properties.getProperty("labelProject") + ":");
 
         jLabelNameProject.setText(this.data.getNameProject());
 
-        jLabel2.setText(this.properties.getProperty("labelBadSmell"));
+        jLabel2.setText(this.properties.getProperty("labelBadSmell") + ":");
 
         jLabelNameBadSmell.setText(this.data.getNameBadSmell());
 
-        jLabel3.setText(this.properties.getProperty("labelType"));
+        jLabel3.setText(this.properties.getProperty("labelType") + ":");
 
         jLabelTypeBadSmell.setText(this.data.getTypeBadSmell());
 
@@ -111,15 +111,16 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         });
 
         if(this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))){
-            jLabel4.setText(this.properties.getProperty("labelTotalClassesBadSmell"));
+            jLabel4.setText(this.properties.getProperty("labelTotalClassesBadSmell") + ":");
         }else{
-            jLabel4.setText(this.properties.getProperty("labelTotalMethodBadSmell"));
+            jLabel4.setText(this.properties.getProperty("labelTotalMethodBadSmell") + ":");
         }
 
+        List<Object> amountBadSmell = (List<Object>)this.data.badSmellData();
         if(this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))){
-            jLabelAmountBadSmell.setText(this.amountBadSmell + " classes");
+            jLabelAmountBadSmell.setText(amountBadSmell.size() + " classes");
         }else{
-            jLabelAmountBadSmell.setText(this.amountBadSmell + " métodos");
+            jLabelAmountBadSmell.setText(amountBadSmell.size() + " métodos");
         }
 
         javax.swing.GroupLayout jPanelIntersectionDataLayout = new javax.swing.GroupLayout(jPanelIntersectionData);
@@ -129,7 +130,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             .addGroup(jPanelIntersectionDataLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntersectionDataLayout.createSequentialGroup()
                         .addComponent(jButtonViewArtifact)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -144,7 +145,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelNameProject)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelIntersectionDataLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -154,7 +155,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelAmountBadSmell)))
-                        .addGap(44, 44, 44)))
+                        .addGap(66, 66, 66)))
                 .addContainerGap())
         );
         jPanelIntersectionDataLayout.setVerticalGroup(
@@ -173,12 +174,12 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(jLabelAmountBadSmell))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
                 .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonViewArtifact)
                     .addComponent(jButtonExportTable))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -194,8 +195,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanelIntersectionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+                .addComponent(jPanelIntersectionData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,11 +230,11 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     }
     
     public String[][] getDataClass(){
-        Collection<Set<Type>> badSmellPerPattern = intersectionClass.values();
+        Collection<Set<designpatterns.structure.Type>> badSmellPerPattern = intersectionClass.values();
         Object[] namePatterns = intersectionClass.keySet().toArray();
         int index = 0;
         String[][] data = new String[badSmellPerPattern.size()][4];
-        for (Set<Type> list : badSmellPerPattern) {
+        for (Set<designpatterns.structure.Type> list : badSmellPerPattern) {
             String namePattern = String.valueOf(namePatterns[index]);
             int amount = Data.getInstance().getDesignPatternByKey(namePattern).getSumClass();
             int classWithBadSmell = list.size();
@@ -245,11 +246,11 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     }
     
     public String[][] getDataMethod(){
-        Collection<Set<MethodBadSmell>> badSmellPerPattern = intersectionMethod.values();
+        Collection<Set<Method>> badSmellPerPattern = intersectionMethod.values();
         Object[] namePatterns = intersectionMethod.keySet().toArray();
         int index = 0;
         String[][] data = new String[badSmellPerPattern.size()][4];
-        for (Set<MethodBadSmell> list : badSmellPerPattern) {
+        for (Set<Method> list : badSmellPerPattern) {
             String namePattern = String.valueOf(namePatterns[index]);
             int amount = Data.getInstance().getDesignPatternByKey(namePattern).getSumMethod();
             int methodsWithBadSmell = list.size();
@@ -268,11 +269,12 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     }
     
     private void getResults() {
-        List<Object> badSmells = (List<Object>) this.data.badSmellData();
-        if (badSmells.get(0) instanceof Type) {
-            this.intersectionClass = (TreeMap<String, Set<Type>>) badSmells;
-        } else {
-            this.intersectionMethod = (TreeMap<String, Set<MethodBadSmell>>) badSmells;
+        if(!this.data.getIntersectionType().isEmpty()){
+            this.intersectionClass = new TreeMap<>();
+            this.intersectionClass.putAll(this.data.getIntersectionType());
+        }else{
+            this.intersectionMethod = new TreeMap<>();
+            this.intersectionMethod.putAll(this.data.getIntersectionMethod());
         }
     }    
 
@@ -291,9 +293,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableIntersection;
     // End of variables declaration//GEN-END:variables
-    private TreeMap<String, Set<Type>> intersectionClass;
-    private TreeMap<String, Set<MethodBadSmell>> intersectionMethod;
-    private int amountBadSmell;
+    private TreeMap<String, Set<designpatterns.structure.Type>> intersectionClass;
+    private TreeMap<String, Set<Method>> intersectionMethod;
     private Data data;
     private Properties properties;
 }

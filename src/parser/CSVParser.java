@@ -48,10 +48,14 @@ public class CSVParser extends Thread {
         BufferedReader bufferedReader = null;
         try {
             bufferedReader = new BufferedReader(new FileReader(this.file.getAbsolutePath()));
+            int index = 0;
             while (bufferedReader.ready()) {
                 String line = bufferedReader.readLine();
-                addArtifact(line);
+                if (index > 0) {
+                    addArtifact(line);
+                }
                 incrementProgress(line.length());
+                index++;
             }
             bufferedReader.close();
         } catch (FileNotFoundException ex) {
@@ -80,16 +84,16 @@ public class CSVParser extends Thread {
         } else if (this.data.getTypeBadSmell().equals(this.properties.getProperty("optionMethod"))) {
             String[] nameType = split[1].split("\\.");
             Type type = new Type(nameType[0], split[2]);
-            MethodBadSmell method = new MethodBadSmell(type, split[0], "");
+            MethodBadSmell method = new MethodBadSmell(type, split[0]);
             this.data.addMethodBadSmell(method);
         }
     }
 
-    private void activeIntersection(){
+    private void activeIntersection() {
         IntersectionParser intersection = new IntersectionParser(screen);
         intersection.start();
     }
-    
+
     private void finish() {
         //Closes the progress bar.
         SwingUtilities.invokeLater(new Runnable() {

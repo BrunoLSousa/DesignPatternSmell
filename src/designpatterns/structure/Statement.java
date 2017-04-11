@@ -14,6 +14,10 @@ public abstract class Statement {
     protected String name;
     private String roleDesignPattern;
     
+    public Statement(){
+        
+    }
+    
     public Statement(String roleDesignPattern){
         this.roleDesignPattern = roleDesignPattern;
     }
