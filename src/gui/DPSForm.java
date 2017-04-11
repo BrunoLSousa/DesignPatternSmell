@@ -18,6 +18,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import parser.CSVParser;
 import parser.XMLParser;
 
 /**
@@ -329,7 +330,7 @@ public class DPSForm extends javax.swing.JFrame {
         if (csvFile != null && !jTextFieldBadSmellName.getText().isEmpty()) {
             this.data.setNameBadSmell(jTextFieldBadSmellName.getText());
             this.data.setTypeBadSmell(jComboBoxTypeBadSmell.getSelectedItem().toString());
-//            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
+            new CSVParser(csvFile, this).start();
             JOptionPane.showMessageDialog(this, "ok");
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningCSVParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
