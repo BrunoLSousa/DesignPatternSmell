@@ -9,6 +9,7 @@ import data.Data;
 import designpatterns.config.PropertiesManager;
 import designpatterns.structure.MethodBadSmell;
 import java.util.Collection;
+import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
@@ -26,15 +27,10 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     /**
      * Creates new form ResultsIntersectionForm
      */
-    public ResultsIntersectionForm(String nameProject, String nameBadSmell, String typeBadSmell) {
+    public ResultsIntersectionForm() {
         this.properties = PropertiesManager.getInstance().getProperties();
-        this.nameProject = nameProject;
-        this.nameBadSmell = nameBadSmell;
-        this.typeBadSmell = typeBadSmell;
-        initComponents();
-    }
-
-    private ResultsIntersectionForm() {
+        this.data = Data.getInstance();
+        getResults();
         initComponents();
     }
 
@@ -68,15 +64,15 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
 
         jLabel1.setText(this.properties.getProperty("labelProject"));
 
-        jLabelNameProject.setText(this.nameProject);
+        jLabelNameProject.setText(this.data.getNameProject());
 
         jLabel2.setText(this.properties.getProperty("labelBadSmell"));
 
-        jLabelNameBadSmell.setText(this.nameBadSmell);
+        jLabelNameBadSmell.setText(this.data.getNameBadSmell());
 
         jLabel3.setText(this.properties.getProperty("labelType"));
 
-        jLabelTypeBadSmell.setText(this.typeBadSmell);
+        jLabelTypeBadSmell.setText(this.data.getTypeBadSmell());
 
         jButtonViewArtifact.setText(this.properties.getProperty("buttonVizualizeArtifacts"));
         jButtonViewArtifact.addActionListener(new java.awt.event.ActionListener() {
@@ -114,13 +110,13 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             }
         });
 
-        if(this.typeBadSmell.equals(this.properties.getProperty("optionClass"))){
+        if(this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))){
             jLabel4.setText(this.properties.getProperty("labelTotalClassesBadSmell"));
         }else{
             jLabel4.setText(this.properties.getProperty("labelTotalMethodBadSmell"));
         }
 
-        if(this.typeBadSmell.equals(this.properties.getProperty("optionClass"))){
+        if(this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))){
             jLabelAmountBadSmell.setText(this.amountBadSmell + " classes");
         }else{
             jLabelAmountBadSmell.setText(this.amountBadSmell + " métodos");
@@ -148,7 +144,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelNameProject)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                         .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelIntersectionDataLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
@@ -158,7 +154,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelAmountBadSmell)))
-                        .addGap(101, 101, 101)))
+                        .addGap(44, 44, 44)))
                 .addContainerGap())
         );
         jPanelIntersectionDataLayout.setVerticalGroup(
@@ -199,7 +195,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanelIntersectionData, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(21, 21, 21))
         );
 
         pack();
@@ -223,13 +219,13 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     }
      
     private String[][] getData() {
-        String[][] data = null;
-        if (this.typeBadSmell.equals(this.properties.getProperty("optionClass"))) {
-            data = getDataClass();
+        String[][] d = null;
+        if (data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))) {
+            d = getDataClass();
         } else {
-            data = getDataMethod();
+            d = getDataMethod();
         }
-        return data;
+        return d;
     }
     
     public String[][] getDataClass(){
@@ -271,40 +267,14 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         this.setVisible(true);
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ResultsIntersectionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ResultsIntersectionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ResultsIntersectionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ResultsIntersectionForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void getResults() {
+        List<Object> badSmells = (List<Object>) this.data.badSmellData();
+        if (badSmells.get(0) instanceof Type) {
+            this.intersectionClass = (TreeMap<String, Set<Type>>) badSmells;
+        } else {
+            this.intersectionMethod = (TreeMap<String, Set<MethodBadSmell>>) badSmells;
         }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ResultsIntersectionForm().setVisible(true);
-            }
-        });
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExportTable;
@@ -323,9 +293,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private TreeMap<String, Set<Type>> intersectionClass;
     private TreeMap<String, Set<MethodBadSmell>> intersectionMethod;
-    private String nameProject;
-    private String nameBadSmell;
-    private String typeBadSmell;
     private int amountBadSmell;
+    private Data data;
     private Properties properties;
 }

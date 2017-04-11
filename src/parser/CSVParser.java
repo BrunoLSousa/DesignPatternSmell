@@ -15,15 +15,9 @@ import java.util.Set;
 public class CSVParser extends Thread{
     
     private Set<File> files;
-    private String nameBadSmell;
-    private String typeBadSmell;
-    private String nameProject;
 
-    public CSVParser(Set<File> files, String nameBadSmell, String typeBadSmell, String nameProject) {
+    public CSVParser(Set<File> files) {
         this.files = files;
-        this.nameBadSmell = nameBadSmell;
-        this.typeBadSmell = typeBadSmell;
-        this.nameProject = nameProject;
     }
 
     @Override

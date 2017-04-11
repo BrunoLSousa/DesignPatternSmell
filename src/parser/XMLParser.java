@@ -34,13 +34,11 @@ import org.jdom2.input.SAXBuilder;
 public class XMLParser extends Thread {
 
     private Set<File> files;
-    private String nameProject;
     private Data data;
     private DPSForm screen;
 
-    public XMLParser(Set<File> files, String name, DPSForm screen) {
+    public XMLParser(Set<File> files, DPSForm screen) {
         this.files = files;
-        this.nameProject = name;
         this.data = Data.getInstance();
         this.screen = screen;
     }

@@ -11,6 +11,7 @@ import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  *
@@ -18,15 +19,20 @@ import java.util.List;
  */
 public class Data {
     
+    private String nameProject;
+    private String nameBadSmell;
+    private String typeBadSmell;
     private HashMap<String, DesignPattern> designPatterns;
     private List<Type> typesBadSmells;
     private List<MethodBadSmell> methodsBadSmells;
     private static Data instance;
+    HashMap<String, Set<Object>> instersection;
     
     private Data(){
         this.designPatterns = new HashMap<>();
         this.typesBadSmells = new ArrayList<>();
         this.methodsBadSmells = new ArrayList<>();
+        this.instersection = new HashMap<>();
     }
     
     public static Data getInstance(){
@@ -65,10 +71,49 @@ public class Data {
         return null;
     }
     
+    public void setNameProject(String nameProject){
+        this.nameProject = nameProject;
+    }
+    
+    public void setNameBadSmell(String nameBadSmell){
+        this.nameBadSmell = nameBadSmell;
+    }
+    
+    public void setTypeBadSmell(String typeBadSmell){
+        this.typeBadSmell = typeBadSmell;
+    }
+    
+    public String getNameProject(){
+        return this.nameProject;
+    }
+    
+    public String getNameBadSmell(){
+        return this.nameBadSmell;
+    }
+    
+    public String getTypeBadSmell(){
+        return this.typeBadSmell;
+    }
+    
+    public void setIntersection(HashMap<String, Set<Object>> intersection){
+        this.instersection = intersection;
+    }
+    
+    public HashMap<String, Set<Object>> getIntersection(){
+        return this.instersection;
+    }
+    
     public void clear(){
         this.designPatterns.clear();
         this.typesBadSmells.clear();
         this.methodsBadSmells.clear();
+        this.instersection.clear();
+    }
+    
+    public void clearCSV(){
+        this.typesBadSmells.clear();
+        this.methodsBadSmells.clear();
+        this.instersection.clear();
     }
     
 }

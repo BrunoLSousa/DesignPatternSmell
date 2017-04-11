@@ -71,6 +71,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuFile = new javax.swing.JMenu();
         jMenuNew = new javax.swing.JMenuItem();
+        jMenuNewCSV = new javax.swing.JMenuItem();
         jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuExit = new javax.swing.JMenuItem();
@@ -254,7 +255,15 @@ public class DPSForm extends javax.swing.JFrame {
         });
         jMenuFile.add(jMenuNew);
 
-        jMenuInstancesDesignPattern.setText(this.properties.getProperty("submenu1_2"));
+        jMenuNewCSV.setText(this.properties.getProperty("submenu1_2"));
+        jMenuNewCSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuNewCSVActionPerformed(evt);
+            }
+        });
+        jMenuFile.add(jMenuNewCSV);
+
+        jMenuInstancesDesignPattern.setText(this.properties.getProperty("submenu1_3"));
         jMenuInstancesDesignPattern.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuInstancesDesignPatternActionPerformed(evt);
@@ -263,7 +272,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuFile.add(jMenuInstancesDesignPattern);
         jMenuFile.add(jSeparator1);
 
-        jMenuExit.setText(this.properties.getProperty("submenu1_3"));
+        jMenuExit.setText(this.properties.getProperty("submenu1_4"));
         jMenuExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuExitActionPerformed(evt);
@@ -318,6 +327,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jButtonIntersectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIntersectionActionPerformed
         if (csvFile != null && !jTextFieldBadSmellName.getText().isEmpty()) {
+            this.data.setNameBadSmell(jTextFieldBadSmellName.getText());
+            this.data.setTypeBadSmell(jComboBoxTypeBadSmell.getSelectedItem().toString());
 //            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
             JOptionPane.showMessageDialog(this, "ok");
         } else {
@@ -363,7 +374,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jButtonConvertActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConvertActionPerformed
         if (!xmlFiles.isEmpty() && !jTextFieldProjectName.getText().isEmpty()) {
-            new XMLParser(this.xmlFiles, jTextFieldProjectName.getText(), this).start();
+            this.data.setNameProject(jTextFieldProjectName.getText());
+            new XMLParser(this.xmlFiles, this).start();
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningXMLParser"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
@@ -380,12 +392,17 @@ public class DPSForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuNewActionPerformed
 
     private void jMenuInstancesDesignPatternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstancesDesignPatternActionPerformed
-        //This method calls the other window.
+        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuInstancesDesignPatternActionPerformed
 
     private void jMenuExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuExitActionPerformed
         System.exit(0);
     }//GEN-LAST:event_jMenuExitActionPerformed
+
+    private void jMenuNewCSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuNewCSVActionPerformed
+        clearCSVFields();
+        enableCSVPanel(true);
+    }//GEN-LAST:event_jMenuNewCSVActionPerformed
 
     private void clearFields() {
         this.data.clear();
@@ -398,6 +415,14 @@ public class DPSForm extends javax.swing.JFrame {
         this.jTextAreaXmlFiles.setText("");
     }
 
+    private void clearCSVFields() {
+        this.data.clearCSV();
+        this.csvFile = null;
+        this.jTextFieldBadSmellName.setText("");
+        this.jTextAreaCsvFile.setText("");
+        this.jComboBoxTypeBadSmell.setSelectedIndex(0);
+    }
+
     public JDialog getLoadingDialog() {
         return this.loadingDialog;
     }
@@ -407,6 +432,21 @@ public class DPSForm extends javax.swing.JFrame {
     }
 
     public void enablePanel(boolean enable) {
+        enableCSVPanel(enable);
+        enableXMLPanel(!enable);
+    }
+    
+    private void enableXMLPanel(boolean enable){
+        this.jLabelProjectName.setEnabled(!enable);
+        this.jTextFieldProjectName.setEnabled(!enable);
+        this.jLabelXmlFiles.setEnabled(!enable);
+        this.jTextAreaXmlFiles.setEnabled(!enable);
+        this.jButtonSelectXml.setEnabled(!enable);
+        this.jButtonCleanXml.setEnabled(!enable);
+        this.jButtonConvert.setEnabled(!enable);
+    }
+    
+    public void enableCSVPanel(boolean enable){
         this.jLabelBadSmellName.setEnabled(enable);
         this.jTextFieldBadSmellName.setEnabled(enable);
         this.jLabelTypeBadSmell.setEnabled(enable);
@@ -416,14 +456,6 @@ public class DPSForm extends javax.swing.JFrame {
         this.jButtonSelectCSV.setEnabled(enable);
         this.jButtonCleanCsv.setEnabled(enable);
         this.jButtonIntersection.setEnabled(enable);
-
-        this.jLabelProjectName.setEnabled(!enable);
-        this.jTextFieldProjectName.setEnabled(!enable);
-        this.jLabelXmlFiles.setEnabled(!enable);
-        this.jTextAreaXmlFiles.setEnabled(!enable);
-        this.jButtonSelectXml.setEnabled(!enable);
-        this.jButtonCleanXml.setEnabled(!enable);
-        this.jButtonConvert.setEnabled(!enable);
     }
 
     /**
@@ -479,6 +511,7 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
     private javax.swing.JMenuItem jMenuNew;
+    private javax.swing.JMenuItem jMenuNewCSV;
     private javax.swing.JPanel jPanelBadSmell;
     private javax.swing.JPanel jPanelDesignPattern;
     private javax.swing.JScrollPane jScrollPane1;
@@ -495,6 +528,4 @@ public class DPSForm extends javax.swing.JFrame {
     private JProgressBar progress = new JProgressBar(0, 0);
     private Data data;
     private Properties properties;
-//    private List<designpatterns.structure.Class> classesWithBadSmell;
-//    private List<MethodBadSmell> methodsWithBadSmell;
 }

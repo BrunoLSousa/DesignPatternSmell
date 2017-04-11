@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelIntersectionData" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -35,7 +35,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanelIntersectionData" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,7 +74,7 @@
                                   <Component id="jLabelNameProject" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="63" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -87,7 +87,7 @@
                                   <Component id="jLabelAmountBadSmell" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
         <Component class="javax.swing.JLabel" name="jLabelNameProject">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.nameProject" type="code"/>
+              <Connection code="this.data.getNameProject()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -148,7 +148,7 @@
         <Component class="javax.swing.JLabel" name="jLabelNameBadSmell">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.nameBadSmell" type="code"/>
+              <Connection code="this.data.getNameBadSmell()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -162,7 +162,7 @@
         <Component class="javax.swing.JLabel" name="jLabelTypeBadSmell">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.typeBadSmell" type="code"/>
+              <Connection code="this.data.getTypeBadSmell()" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -218,7 +218,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}else{&#xa;jLabel4.setText(this.properties.getProperty(&quot;labelTotalMethodBadSmell&quot;));&#xa;}"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(this.typeBadSmell.equals(this.properties.getProperty(&quot;optionClass&quot;))){"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(this.data.getTypeBadSmell().equals(this.properties.getProperty(&quot;optionClass&quot;))){"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelAmountBadSmell">
@@ -229,7 +229,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}else{&#xa;jLabelAmountBadSmell.setText(this.amountBadSmell + &quot; m&#xe9;todos&quot;);&#xa;}"/>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(this.typeBadSmell.equals(this.properties.getProperty(&quot;optionClass&quot;))){"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="if(this.data.getTypeBadSmell().equals(this.properties.getProperty(&quot;optionClass&quot;))){"/>
           </AuxValues>
         </Component>
       </SubComponents>
