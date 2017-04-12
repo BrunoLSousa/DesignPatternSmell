@@ -8,15 +8,23 @@ package gui;
 import data.Data;
 import designpatterns.config.PropertiesManager;
 import designpatterns.structure.Method;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -50,7 +58,6 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         jLabelNameBadSmell = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelTypeBadSmell = new javax.swing.JLabel();
-        jButtonViewArtifact = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableIntersection = new javax.swing.JTable();
         jButtonExportTable = new javax.swing.JButton();
@@ -71,13 +78,6 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         jLabel3.setText(this.properties.getProperty("labelType") + ":");
 
         jLabelTypeBadSmell.setText(this.data.getTypeBadSmell());
-
-        jButtonViewArtifact.setText(this.properties.getProperty("buttonVizualizeArtifacts"));
-        jButtonViewArtifact.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonViewArtifactActionPerformed(evt);
-            }
-        });
 
         jTableIntersection.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,7 +111,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         if(this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))){
             jLabel4.setText(this.properties.getProperty("labelTotalClassesBadSmell") + ":");
         }else{
-            jLabel4.setText(this.properties.getProperty("labelTotalMethodBadSmell") + ":");
+            jLabel4.setText(this.properties.getProperty("labelTotalMethodsBadSmell") + ":");
         }
 
         List<Object> amountBadSmell = (List<Object>)this.data.badSmellData();
@@ -130,8 +130,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                 .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntersectionDataLayout.createSequentialGroup()
-                        .addComponent(jButtonViewArtifact)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonExportTable))
                     .addGroup(jPanelIntersectionDataLayout.createSequentialGroup()
                         .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -174,9 +173,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonViewArtifact)
-                    .addComponent(jButtonExportTable))
+                .addComponent(jButtonExportTable)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -200,14 +197,56 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonViewArtifactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonViewArtifactActionPerformed
-        //This method calls the screen that shows the artifacts with design patterns and bad smell.
-    }//GEN-LAST:event_jButtonViewArtifactActionPerformed
-
     private void jButtonExportTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportTableActionPerformed
-        //This method exports the result on table.
+        JFileChooser jfileChooser = new JFileChooser();
+        int returnVal = jfileChooser.showSaveDialog(this);
+        int confirm = 0;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                File xls = jfileChooser.getSelectedFile();
+                xls.createNewFile();
+                confirm = toExcel(this.jTableIntersection, xls);
+            } catch (IOException ex) {
+                Logger.getLogger(ResultsIntersectionForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (confirm == 1) {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportIntersection"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
+        } else {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportIntersection"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonExportTableActionPerformed
 
+        public int toExcel(JTable table, File file) {
+        try {
+            TableModel model = table.getModel();
+            FileWriter excel = new FileWriter(file);
+
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                excel.write("\"" + model.getColumnName(i) + "\"" + ",");
+            }
+
+            excel.write("\n");
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    excel.write("\"" + model.getValueAt(i, j).toString() + "\"" + ",");
+                }
+                excel.write("\n");
+            }
+            
+            excel.write("\n");
+
+            excel.close();
+
+            return 1;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return 0;
+    }
+    
      private void tableResults() {
         String[] colunas = new String[]{this.properties.getProperty("labelDesignPatternTable"), this.properties.getProperty("labelAmountTable"), this.properties.getProperty("labelAmountAffectedTable"), this.properties.getProperty("labelPercentualAffectedTable")};
         String[][] dados = getData();
@@ -278,7 +317,6 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExportTable;
-    private javax.swing.JButton jButtonViewArtifact;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

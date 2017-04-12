@@ -12,7 +12,6 @@ import designpatterns.structure.Method;
 import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Type;
 import gui.DPSForm;
-import gui.ResultsIntersectionForm;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.util.Collection;
@@ -21,6 +20,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Properties;
 import java.util.Set;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 /**
@@ -30,12 +30,14 @@ import javax.swing.SwingUtilities;
 public class IntersectionParser extends Thread{
 
     private Data data;
+    private Properties properties;
     private HashMap<String, Set<Type>> intersectionType;
     private HashMap<String, Set<Method>> intersectionMethod;
     private DPSForm screen;
 
     public IntersectionParser(DPSForm screen) {
         this.data = Data.getInstance();
+        this.properties = PropertiesManager.getInstance().getProperties();
         initializeMapType();
         initializeMapMethod();
         this.screen = screen;
@@ -48,8 +50,7 @@ public class IntersectionParser extends Thread{
         intersection();
         finish();
         this.screen.enableCSVPanel(false);
-        ResultsIntersectionForm results = new ResultsIntersectionForm();
-        results.setVisible(true);
+        JOptionPane.showMessageDialog(null, this.properties.getProperty("confirmationIntersection"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
     }
 
     private void configureProgressBar() {

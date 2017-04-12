@@ -6,12 +6,14 @@
 package data;
 
 import designpatterns.DesignPattern;
+import designpatterns.config.PropertiesManager;
 import designpatterns.structure.Method;
 import designpatterns.structure.MethodBadSmell;
 import designpatterns.structure.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 /**
@@ -63,6 +65,26 @@ public class Data {
     
     public void addMethodBadSmell(MethodBadSmell method){
         this.methodsBadSmells.add(method);
+    }
+    
+    public Integer totalBadSmells(){
+        Properties properties = PropertiesManager.getInstance().getProperties();
+        if(this.typeBadSmell.equals(properties.getProperty("optionClass"))){
+            return this.typesBadSmells.size();
+        }else{
+            return this.methodsBadSmells.size();
+        }
+        
+    }
+    
+    public Integer totalIntersection(String designPattern){
+        Properties properties = PropertiesManager.getInstance().getProperties();
+        if(this.typeBadSmell.equals(properties.getProperty("optionClass"))){
+            return this.instersectionType.get(designPattern).size();
+        }else{
+            return this.instersectionMethod.get(designPattern).size();
+        }
+        
     }
     
     public Object badSmellData(){

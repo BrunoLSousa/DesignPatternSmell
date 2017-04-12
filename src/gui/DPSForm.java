@@ -77,7 +77,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuExit = new javax.swing.JMenuItem();
         jMenuResults = new javax.swing.JMenu();
         jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemViewIntersection = new javax.swing.JMenuItem();
         jMenuItemViewArtifacts = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -288,13 +288,13 @@ public class DPSForm extends javax.swing.JFrame {
         });
         jMenuResults.add(jMenuInstancesDesignPattern);
 
-        jMenuItem1.setText(this.properties.getProperty("submenu2_2"));
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemViewIntersection.setText(this.properties.getProperty("submenu2_2"));
+        jMenuItemViewIntersection.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemViewIntersectionActionPerformed(evt);
             }
         });
-        jMenuResults.add(jMenuItem1);
+        jMenuResults.add(jMenuItemViewIntersection);
 
         jMenuItemViewArtifacts.setText(this.properties.getProperty("submenu2_3"));
         jMenuItemViewArtifacts.addActionListener(new java.awt.event.ActionListener() {
@@ -415,10 +415,10 @@ public class DPSForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuNewActionPerformed
 
     private void jMenuInstancesDesignPatternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstancesDesignPatternActionPerformed
-        if(!this.data.getDesignPatterns().isEmpty()){
+        if (!this.data.getDesignPatterns().isEmpty()) {
             DesignPatternsInstancesForm designPatternsInstances = new DesignPatternsInstancesForm();
             designPatternsInstances.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningInstances"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
     }//GEN-LAST:event_jMenuInstancesDesignPatternActionPerformed
@@ -434,18 +434,22 @@ public class DPSForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuNewCSVActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        if(!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()){
+    private void jMenuItemViewIntersectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewIntersectionActionPerformed
+        if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
             ResultsIntersectionForm screenIntersection = new ResultsIntersectionForm();
             screenIntersection.setVisible(true);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningViewIntersection"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_jMenuItemViewIntersectionActionPerformed
 
     private void jMenuItemViewArtifactsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewArtifactsActionPerformed
-        ResultsArtifactsForm results = new ResultsArtifactsForm();
-        results.setVisible(true);
+        if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
+            ResultsArtifactsForm results = new ResultsArtifactsForm();
+            results.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningViewAffectedArtifacts"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
+        }
     }//GEN-LAST:event_jMenuItemViewArtifactsActionPerformed
 
     private void clearFields() {
@@ -554,8 +558,8 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuExit;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemViewArtifacts;
+    private javax.swing.JMenuItem jMenuItemViewIntersection;
     private javax.swing.JMenuItem jMenuNew;
     private javax.swing.JMenuItem jMenuNewCSV;
     private javax.swing.JMenu jMenuResults;
