@@ -78,7 +78,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuResults = new javax.swing.JMenu();
         jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemViewArtifacts = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(null);
@@ -296,8 +296,13 @@ public class DPSForm extends javax.swing.JFrame {
         });
         jMenuResults.add(jMenuItem1);
 
-        jMenuItem2.setText(this.properties.getProperty("submenu2_3"));
-        jMenuResults.add(jMenuItem2);
+        jMenuItemViewArtifacts.setText(this.properties.getProperty("submenu2_3"));
+        jMenuItemViewArtifacts.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemViewArtifactsActionPerformed(evt);
+            }
+        });
+        jMenuResults.add(jMenuItemViewArtifacts);
 
         jMenuBar.add(jMenuResults);
 
@@ -438,6 +443,11 @@ public class DPSForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
+    private void jMenuItemViewArtifactsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewArtifactsActionPerformed
+        ResultsArtifactsForm results = new ResultsArtifactsForm();
+        results.setVisible(true);
+    }//GEN-LAST:event_jMenuItemViewArtifactsActionPerformed
+
     private void clearFields() {
         this.data.clear();
         this.xmlFiles = new LinkedHashSet<>();
@@ -545,7 +555,7 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItemViewArtifacts;
     private javax.swing.JMenuItem jMenuNew;
     private javax.swing.JMenuItem jMenuNewCSV;
     private javax.swing.JMenu jMenuResults;

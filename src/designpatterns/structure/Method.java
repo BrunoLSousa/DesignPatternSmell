@@ -15,6 +15,7 @@ import java.util.List;
 public class Method extends Statement {
 
     private List<String> params;
+    private Type owner;
 
     public Method(String name) {
         this.name = name;
@@ -43,6 +44,7 @@ public class Method extends Statement {
         addParams(split[1]);
         String[] methodComplete = split[0].split("\\.");
         this.name = methodComplete[methodComplete.length - 1];
+        this.owner = new Type(split[0]);
     }
 
     private void createMethod(String completeName) {
@@ -51,6 +53,7 @@ public class Method extends Statement {
         this.name = split[1];
         String[] typeMethod = split[3].split(":");
         this.type = typeMethod[1];
+        this.owner = new Type(split[0]);
     }
 
     public void addParams(String params) {
@@ -64,6 +67,10 @@ public class Method extends Statement {
                 this.params.add(params);
             }
         }
+    }
+    
+    public Type getOwner(){
+        return this.owner;
     }
 
 }
