@@ -7,17 +7,24 @@ package gui;
 
 import data.Data;
 import designpatterns.config.PropertiesManager;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import statistics.AssociationRule;
 import statistics.AssociationRuleEnum;
 
@@ -287,23 +294,23 @@ public class AssociationRuleForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCalculateActionPerformed
 
     private void jButtonExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExportActionPerformed
-//        JFileChooser jfileChooser = new JFileChooser();
-//        int returnVal = jfileChooser.showSaveDialog(this);
-//        int confirm = 0;
-//        if (returnVal == JFileChooser.APPROVE_OPTION) {
-//            try {
-//                File xls = jfileChooser.getSelectedFile();
-//                xls.createNewFile();
-//                confirm = toExcel(this.jTableArtifacts, xls);
-//            } catch (IOException ex) {
-//                Logger.getLogger(ResultsArtifactsForm.class.getName()).log(Level.SEVERE, null, ex);
-//            }
-//        }
-//        if (confirm == 1) {
-//            JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportArtifacts"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
-//        } else {
-//            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportArtifacts"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
-//        }
+        JFileChooser jfileChooser = new JFileChooser();
+        int returnVal = jfileChooser.showSaveDialog(this);
+        int confirm = 0;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            try {
+                File xls = jfileChooser.getSelectedFile();
+                xls.createNewFile();
+                confirm = toExcel(this.jTableAssociationRules, xls);
+            } catch (IOException ex) {
+                Logger.getLogger(AssociationRuleForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        if (confirm == 1) {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportAssociationRules"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
+        } else {
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportAssociationRules"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
+        }
     }//GEN-LAST:event_jButtonExportActionPerformed
 
     private void jCheckBoxSupportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSupportActionPerformed
@@ -338,6 +345,36 @@ public class AssociationRuleForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBoxConvictionActionPerformed
 
+    public int toExcel(JTable table, File file) {
+        try {
+            TableModel model = table.getModel();
+            FileWriter excel = new FileWriter(file);
+
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                excel.write("\"" + model.getColumnName(i) + "\"" + ",");
+            }
+
+            excel.write("\n");
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    excel.write("\"" + model.getValueAt(i, j).toString() + "\"" + ",");
+                }
+                excel.write("\n");
+            }
+            
+            excel.write("\n");
+
+            excel.close();
+
+            return 1;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+        return 0;
+    }
+    
     private void tableResults() {
         if (!this.rules.isEmpty() && !this.filter.isEmpty()) {
             DefaultTableModel model = getColumns();

@@ -217,7 +217,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonExportTableActionPerformed
 
-        public int toExcel(JTable table, File file) {
+    public int toExcel(JTable table, File file) {
         try {
             TableModel model = table.getModel();
             FileWriter excel = new FileWriter(file);
@@ -234,7 +234,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                 }
                 excel.write("\n");
             }
-            
+
             excel.write("\n");
 
             excel.close();
@@ -246,8 +246,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
 
         return 0;
     }
-    
-     private void tableResults() {
+
+    private void tableResults() {
         String[] colunas = new String[]{this.properties.getProperty("labelDesignPatternTable"), this.properties.getProperty("labelAmountTable"), this.properties.getProperty("labelAmountAffectedTable"), this.properties.getProperty("labelPercentualAffectedTable")};
         String[][] dados = getData();
         jTableIntersection = new JTable(dados, colunas);
@@ -255,7 +255,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         cellRender.setHorizontalAlignment(SwingConstants.CENTER);
         jTableIntersection.setEnabled(false);
     }
-     
+
     private String[][] getData() {
         String[][] d = null;
         if (data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))) {
@@ -265,8 +265,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         }
         return d;
     }
-    
-    public String[][] getDataClass(){
+
+    public String[][] getDataClass() {
         Collection<Set<designpatterns.structure.Type>> badSmellPerPattern = intersectionClass.values();
         Object[] namePatterns = intersectionClass.keySet().toArray();
         int index = 0;
@@ -281,8 +281,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         }
         return data;
     }
-    
-    public String[][] getDataMethod(){
+
+    public String[][] getDataMethod() {
         Collection<Set<Method>> badSmellPerPattern = intersectionMethod.values();
         Object[] namePatterns = intersectionMethod.keySet().toArray();
         int index = 0;
@@ -297,23 +297,23 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         }
         return data;
     }
-    
+
     public void init() {
         initComponents();
         this.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         this.setTitle(this.properties.getProperty("titleResultsIntersectionForm"));
         this.setVisible(true);
     }
-    
+
     private void getResults() {
-        if(!this.data.getIntersectionType().isEmpty()){
+        if (!this.data.getIntersectionType().isEmpty()) {
             this.intersectionClass = new TreeMap<>();
             this.intersectionClass.putAll(this.data.getIntersectionType());
-        }else{
+        } else {
             this.intersectionMethod = new TreeMap<>();
             this.intersectionMethod.putAll(this.data.getIntersectionMethod());
         }
-    }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExportTable;
