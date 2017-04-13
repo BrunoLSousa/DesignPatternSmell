@@ -18,50 +18,53 @@ public class AssociationRule {
 
     private Data data;
     private Properties properties;
-    private Integer transaction;
-    
+    private Double transaction;
+
     public AssociationRule(Integer transaction) {
         this.data = Data.getInstance();
         this.properties = PropertiesManager.getInstance().getProperties();
-        this.transaction = transaction;
+        this.transaction = Double.parseDouble(String.valueOf(transaction));
     }
-    
-    public HashMap<String, Double> calculate(String designPattern){
+
+    public HashMap<String, Double> calculate(String designPattern) {
         HashMap<String, Double> rules = new HashMap<>();
         rules.put(AssociationRuleEnum.SUPPORT.toString(), ruleSupport(designPattern));
         rules.put(AssociationRuleEnum.CONFIDENCE.toString(), ruleConfidence(designPattern));
         rules.put(AssociationRuleEnum.LIFT.toString(), ruleLift(designPattern));
-        rules.put(AssociationRuleEnum.CONVICTION.toString(), ruleSupport(designPattern));
+        rules.put(AssociationRuleEnum.CONVICTION.toString(), ruleConviction(designPattern));
         return rules;
     }
-    
-    private Double ruleSupport(String designPattern){
-        Integer rule = this.data.totalIntersection(designPattern);
-        return Double.parseDouble(String.valueOf(rule/transaction));
+
+    private Double ruleSupport(String designPattern) {
+        Double rule = Double.parseDouble(String.valueOf(this.data.totalIntersection(designPattern)));
+        return (rule / transaction);
     }
-    
-    private Double antecedentSupport(String designPattern){
-        Integer antecedent = (this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))) ? this.data.getDesignPatternByKey(designPattern).getSumClass() : this.data.getDesignPatternByKey(designPattern).getSumMethod();
-        return Double.parseDouble(String.valueOf(antecedent/transaction));
+
+    private Double antecedentSupport(String designPattern) {
+        Double antecedent = (this.data.getTypeBadSmell().equals(this.properties.getProperty("optionClass"))) ? Double.parseDouble(String.valueOf(this.data.getDesignPatternByKey(designPattern).getSumClass())) : Double.parseDouble(String.valueOf(this.data.getDesignPatternByKey(designPattern).getSumMethod()));
+        return (antecedent / transaction);
     }
-    
-    private Double consequentSupport(){
+
+    private Double consequentSupport() {
         Integer consequent = this.data.totalBadSmells();
-        return Double.parseDouble(String.valueOf(consequent/transaction));
+        return (double) (consequent / transaction);
     }
-    
-    private Double ruleConfidence(String designPattern){
-        return (ruleSupport(designPattern)/antecedentSupport(designPattern));
+
+    private Double ruleConfidence(String designPattern) {
+        Double antecedentSupport = antecedentSupport(designPattern);
+        return (ruleSupport(designPattern) / antecedentSupport);
     }
-    
-    private Double ruleLift(String designPattern){
-        return (ruleConfidence(designPattern)/consequentSupport());
+
+    private Double ruleLift(String designPattern) {
+        Double consequentSupport = consequentSupport();
+        return (ruleConfidence(designPattern) / consequentSupport);
     }
-    
-    private Double ruleConviction(String designPattern){
-        Double operation1 = 1 - consequentSupport();
-        Double operation2 = 1 - ruleConfidence(designPattern);
-        return (operation1/operation2);
+
+    private Double ruleConviction(String designPattern) {
+        Double antecedentSupport = antecedentSupport(designPattern);
+        Double operation1 = antecedentSupport * (1 - consequentSupport());
+        Double operation2 = antecedentSupport - ruleSupport(designPattern);
+        return (operation1 / operation2);
     }
-    
+
 }

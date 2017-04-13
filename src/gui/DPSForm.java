@@ -79,9 +79,10 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuInstancesDesignPattern = new javax.swing.JMenuItem();
         jMenuItemViewIntersection = new javax.swing.JMenuItem();
         jMenuItemViewArtifacts = new javax.swing.JMenuItem();
+        jMenuStatistics = new javax.swing.JMenu();
+        jMenuItemAssociationRules = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(null);
 
         jPanelBadSmell.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelBadSmell")));
 
@@ -306,6 +307,18 @@ public class DPSForm extends javax.swing.JFrame {
 
         jMenuBar.add(jMenuResults);
 
+        jMenuStatistics.setText(this.properties.getProperty("menu3"));
+
+        jMenuItemAssociationRules.setText(this.properties.getProperty("submenu3_1"));
+        jMenuItemAssociationRules.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAssociationRulesActionPerformed(evt);
+            }
+        });
+        jMenuStatistics.add(jMenuItemAssociationRules);
+
+        jMenuBar.add(jMenuStatistics);
+
         setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -452,6 +465,15 @@ public class DPSForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemViewArtifactsActionPerformed
 
+    private void jMenuItemAssociationRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAssociationRulesActionPerformed
+        if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
+            AssociationRuleForm statistics = new AssociationRuleForm();
+            statistics.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, this.properties.getProperty("warningAssociationRules"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
+        }
+    }//GEN-LAST:event_jMenuItemAssociationRulesActionPerformed
+
     private void clearFields() {
         this.data.clear();
         this.xmlFiles = new LinkedHashSet<>();
@@ -558,11 +580,13 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuExit;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
+    private javax.swing.JMenuItem jMenuItemAssociationRules;
     private javax.swing.JMenuItem jMenuItemViewArtifacts;
     private javax.swing.JMenuItem jMenuItemViewIntersection;
     private javax.swing.JMenuItem jMenuNew;
     private javax.swing.JMenuItem jMenuNewCSV;
     private javax.swing.JMenu jMenuResults;
+    private javax.swing.JMenu jMenuStatistics;
     private javax.swing.JPanel jPanelBadSmell;
     private javax.swing.JPanel jPanelDesignPattern;
     private javax.swing.JScrollPane jScrollPane1;
