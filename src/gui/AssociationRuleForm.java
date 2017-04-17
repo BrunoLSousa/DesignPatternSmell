@@ -10,6 +10,7 @@ import designpatterns.config.PropertiesManager;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -362,7 +363,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
                 }
                 excel.write("\n");
             }
-            
+
             excel.write("\n");
 
             excel.close();
@@ -374,7 +375,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
 
         return 0;
     }
-    
+
     private void tableResults() {
         if (!this.rules.isEmpty() && !this.filter.isEmpty()) {
             DefaultTableModel model = getColumns();
@@ -383,9 +384,15 @@ public class AssociationRuleForm extends javax.swing.JFrame {
             jTableAssociationRules.setModel(model);
             jTableAssociationRules.setShowGrid(true);
             DefaultTableCellRenderer cellRender = new DefaultTableCellRenderer();
-            cellRender.setHorizontalAlignment(SwingConstants.CENTER);
+            cellRender.setHorizontalAlignment(SwingConstants.RIGHT);
             ((DefaultTableCellRenderer) jTableAssociationRules.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(SwingConstants.CENTER);
+            int index = 1;
+            for (AssociationRuleEnum rule : this.filter) {
+                this.jTableAssociationRules.getColumnModel().getColumn(index).setCellRenderer(cellRender);
+                index++;
+            }
             jTableAssociationRules.getTableHeader().setReorderingAllowed(false);
+            jTableAssociationRules.setEnabled(false);
             jScrollPane1.setViewportView(jTableAssociationRules);
         } else {
             JLabel emptyLabel = new JLabel("There aren't artifacts for this filter!!!");
@@ -405,7 +412,12 @@ public class AssociationRuleForm extends javax.swing.JFrame {
             int column = 1;
             for (AssociationRuleEnum r : AssociationRuleEnum.values()) {
                 if (this.filter.contains(r)) {
-                    model.setValueAt(values.get(r.toString()), line, column);
+                    if (!Double.isNaN(values.get(r.toString()))) {
+                        DecimalFormat df = new DecimalFormat("0.00000");
+                        model.setValueAt(df.format(values.get(r.toString())).replace(",", "."), line, column);
+                    } else {
+                        model.setValueAt(values.get(r.toString()), line, column);
+                    }
                     column++;
                 }
             }
