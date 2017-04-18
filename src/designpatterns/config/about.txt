@@ -1,0 +1,16 @@
+FindSmells 1.0 is a tool for detecting bad smells from XML files with computed software metrics. 
+The tool aims to provide flexible, detection since strategies may be composed by the user and run 
+without the source code of the system under analysis. FindSmells  allows management of detection 
+strategies through a data base, and provides the export of detection results. Therefore, the tool 
+may support the development team in assessing software quality.\n\n
+
+FindSmell was developed in 2017 by:\n
+- Bruno L. Sousa (UFMG)\n
+- Priscila P. Souza (UFMG)\n
+- Eduardo Fernandes (UFMG)\n
+- Kecia A. M. Ferreira (CEFET-MG)\n
+- Mariza A. S. Bigonha (UFMG)\n\n
+
+The FindSmell's source code can be found in the following link:\n\n
+
+https://github.com/BrunoLSousa/FindSmells

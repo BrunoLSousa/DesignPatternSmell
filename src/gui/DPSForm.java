@@ -83,6 +83,10 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuItemViewArtifacts = new javax.swing.JMenuItem();
         jMenuStatistics = new javax.swing.JMenu();
         jMenuItemAssociationRules = new javax.swing.JMenuItem();
+        jMenuHelp = new javax.swing.JMenu();
+        jMenuItemTutorial = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItemAbout = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -321,6 +325,17 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuStatistics.add(jMenuItemAssociationRules);
 
         jMenuBar.add(jMenuStatistics);
+
+        jMenuHelp.setText(this.properties.getProperty("menu4"));
+
+        jMenuItemTutorial.setText(this.properties.getProperty("submenu4_1"));
+        jMenuHelp.add(jMenuItemTutorial);
+        jMenuHelp.add(jSeparator2);
+
+        jMenuItemAbout.setText(this.properties.getProperty("submenu4_3"));
+        jMenuHelp.add(jMenuItemAbout);
+
+        jMenuBar.add(jMenuHelp);
 
         setJMenuBar(jMenuBar);
 
@@ -586,8 +601,11 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuExit;
     private javax.swing.JMenu jMenuFile;
+    private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
+    private javax.swing.JMenuItem jMenuItemAbout;
     private javax.swing.JMenuItem jMenuItemAssociationRules;
+    private javax.swing.JMenuItem jMenuItemTutorial;
     private javax.swing.JMenuItem jMenuItemViewArtifacts;
     private javax.swing.JMenuItem jMenuItemViewIntersection;
     private javax.swing.JMenuItem jMenuNew;
@@ -599,6 +617,7 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JTextArea jTextAreaCsvFile;
     private javax.swing.JTextArea jTextAreaXmlFiles;
     private javax.swing.JTextField jTextFieldBadSmellName;
