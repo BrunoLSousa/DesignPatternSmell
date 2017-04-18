@@ -31,7 +31,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanelMain3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="75" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,10 +74,8 @@
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanelDataAssociatonRule">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Input and Filter"/>
-              </Border>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty(&quot;panelInputFilter&quot;))" type="code"/>
             </Property>
           </Properties>
 
@@ -126,7 +124,9 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jButtonCalculate">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Calculate"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.properties.getProperty(&quot;buttonCalculate&quot;)" type="code"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCalculateActionPerformed"/>
@@ -135,7 +135,7 @@
             <Component class="javax.swing.JLabel" name="jLabelTransactionNumber">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="this.properties.getProperty(&quot;labelTransactionsNumber&quot;)" type="code"/>
+                  <Connection code="this.properties.getProperty(&quot;labelTransactionsNumber&quot;) + &quot;:&quot;" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -143,10 +143,8 @@
             </Component>
             <Container class="javax.swing.JPanel" name="jPanelFilter">
               <Properties>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="Rules"/>
-                  </Border>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty(&quot;panelRules&quot;))" type="code"/>
                 </Property>
               </Properties>
 
@@ -220,10 +218,8 @@
         </Container>
         <Container class="javax.swing.JPanel" name="jPanelAssociationRulesResults">
           <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Association Rules Results"/>
-              </Border>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty(&quot;panelAssociationRulesResults&quot;))" type="code"/>
             </Property>
           </Properties>
 
@@ -303,7 +299,9 @@
             </Container>
             <Component class="javax.swing.JButton" name="jButtonExport">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Export"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                  <Connection code="this.properties.getProperty(&quot;buttonExportCSVArtifacts&quot;)" type="code"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonExportActionPerformed"/>

@@ -83,18 +83,18 @@ public class AssociationRuleForm extends javax.swing.JFrame {
 
         jPanelMain3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jPanelDataAssociatonRule.setBorder(javax.swing.BorderFactory.createTitledBorder("Input and Filter"));
+        jPanelDataAssociatonRule.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelInputFilter")));
 
-        jButtonCalculate.setText("Calculate");
+        jButtonCalculate.setText(this.properties.getProperty("buttonCalculate"));
         jButtonCalculate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCalculateActionPerformed(evt);
             }
         });
 
-        jLabelTransactionNumber.setText(this.properties.getProperty("labelTransactionsNumber"));
+        jLabelTransactionNumber.setText(this.properties.getProperty("labelTransactionsNumber") + ":");
 
-        jPanelFilter.setBorder(javax.swing.BorderFactory.createTitledBorder("Rules"));
+        jPanelFilter.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelRules")));
 
         jCheckBoxSupport.setText("Support");
         jCheckBoxSupport.addActionListener(new java.awt.event.ActionListener() {
@@ -184,7 +184,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanelAssociationRulesResults.setBorder(javax.swing.BorderFactory.createTitledBorder("Association Rules Results"));
+        jPanelAssociationRulesResults.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAssociationRulesResults")));
 
         jTableAssociationRules.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,7 +209,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableAssociationRules);
         tableResults();
 
-        jButtonExport.setText("Export");
+        jButtonExport.setText(this.properties.getProperty("buttonExportCSVArtifacts"));
         jButtonExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExportActionPerformed(evt);
@@ -295,7 +295,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelMain3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 75, Short.MAX_VALUE))
         );
 
         pack();
@@ -329,8 +329,6 @@ public class AssociationRuleForm extends javax.swing.JFrame {
         }
         if (confirm == 1) {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportAssociationRules"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
-        } else {
-            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportAssociationRules"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportActionPerformed
 

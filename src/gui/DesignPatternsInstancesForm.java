@@ -180,8 +180,6 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
         }
         if (confirm == 1) {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportAmountInstances"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
-        } else {
-            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportAmountInstances"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportActionPerformed
 

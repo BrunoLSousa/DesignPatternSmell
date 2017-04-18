@@ -230,8 +230,6 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         }
         if (confirm == 1) {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportIntersection"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
-        } else {
-            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportIntersection"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportTableActionPerformed
 

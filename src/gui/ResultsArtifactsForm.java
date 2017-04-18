@@ -269,7 +269,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("DetectionStrategies"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAffectedArtifacts")));
 
         jTableArtifacts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -336,14 +336,15 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPrevious)
                     .addComponent(jButtonNext)
                     .addComponent(jLabelHighlighter))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jButtonExport.setText("Export");
@@ -389,7 +390,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExport)
                     .addComponent(jButton1))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -402,7 +403,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 35, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -435,8 +436,6 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         }
         if (confirm == 1) {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("confirmationExportArtifacts"), this.properties.getProperty("titleConfirmation"), JOptionPane.INFORMATION_MESSAGE, null);
-        } else {
-            JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportArtifacts"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportActionPerformed
 
