@@ -43,6 +43,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         getResults();
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(this.properties.getProperty("titleDPS"));
     }
 
     /**

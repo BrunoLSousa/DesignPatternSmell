@@ -44,6 +44,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         this.mainScreen = mainScreen;
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(this.properties.getProperty("titleDPS"));
         updatePages();
         verifyStateButtons();
         updateHighlighter();

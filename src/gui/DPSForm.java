@@ -36,6 +36,7 @@ public class DPSForm extends javax.swing.JFrame {
         this.properties = PropertiesManager.getInstance().getProperties();
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle(this.properties.getProperty("titleDPS"));
         enablePanel(false);
         this.loadingDialog.add(progress);
         this.loadingDialog.pack();
