@@ -85,6 +85,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuItemAssociationRules = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemTutorial = new javax.swing.JMenuItem();
+        jMenuItemAboutAssociationRules = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenuItemAbout = new javax.swing.JMenuItem();
 
@@ -330,6 +331,14 @@ public class DPSForm extends javax.swing.JFrame {
 
         jMenuItemTutorial.setText(this.properties.getProperty("submenu4_1"));
         jMenuHelp.add(jMenuItemTutorial);
+
+        jMenuItemAboutAssociationRules.setText(this.properties.getProperty("submenu4_2"));
+        jMenuItemAboutAssociationRules.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutAssociationRulesActionPerformed(evt);
+            }
+        });
+        jMenuHelp.add(jMenuItemAboutAssociationRules);
         jMenuHelp.add(jSeparator2);
 
         jMenuItemAbout.setText(this.properties.getProperty("submenu4_3"));
@@ -502,9 +511,14 @@ public class DPSForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemAssociationRulesActionPerformed
 
     private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
-        AboutForm about = new AboutForm();
-        about.setVisible(true);
+        AboutForm aboutScreen = new AboutForm();
+        aboutScreen.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutActionPerformed
+
+    private void jMenuItemAboutAssociationRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutAssociationRulesActionPerformed
+        AboutEquationsForm equationScreen = new AboutEquationsForm();
+        equationScreen.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAboutAssociationRulesActionPerformed
 
     private void clearFields() {
         this.data.clear();
@@ -614,6 +628,7 @@ public class DPSForm extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuInstancesDesignPattern;
     private javax.swing.JMenuItem jMenuItemAbout;
+    private javax.swing.JMenuItem jMenuItemAboutAssociationRules;
     private javax.swing.JMenuItem jMenuItemAssociationRules;
     private javax.swing.JMenuItem jMenuItemTutorial;
     private javax.swing.JMenuItem jMenuItemViewArtifacts;
