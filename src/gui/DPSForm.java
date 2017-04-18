@@ -333,6 +333,11 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuHelp.add(jSeparator2);
 
         jMenuItemAbout.setText(this.properties.getProperty("submenu4_3"));
+        jMenuItemAbout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAboutActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuItemAbout);
 
         jMenuBar.add(jMenuHelp);
@@ -495,6 +500,11 @@ public class DPSForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningAssociationRules"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
         }
     }//GEN-LAST:event_jMenuItemAssociationRulesActionPerformed
+
+    private void jMenuItemAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAboutActionPerformed
+        AboutForm about = new AboutForm();
+        about.setVisible(true);
+    }//GEN-LAST:event_jMenuItemAboutActionPerformed
 
     private void clearFields() {
         this.data.clear();

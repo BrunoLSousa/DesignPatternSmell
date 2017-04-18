@@ -28,6 +28,7 @@ public class AboutForm extends javax.swing.JFrame {
         initComponents();
         loadText();
         this.setLocationRelativeTo(null);
+        this.setTitle(this.properties.getProperty("titleAbout"));
     }
 
     /**
@@ -44,7 +45,6 @@ public class AboutForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
