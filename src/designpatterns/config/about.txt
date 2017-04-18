@@ -4,13 +4,11 @@ without the source code of the system under analysis. FindSmells  allows managem
 strategies through a data base, and provides the export of detection results. Therefore, the tool 
 may support the development team in assessing software quality.\n\n
 
-FindSmell was developed in 2017 by:\n
+Design Pattern Smell was developed in 2017 by:\n
 - Bruno L. Sousa (UFMG)\n
-- Priscila P. Souza (UFMG)\n
-- Eduardo Fernandes (UFMG)\n
-- Kecia A. M. Ferreira (CEFET-MG)\n
-- Mariza A. S. Bigonha (UFMG)\n\n
+- Mariza A. S. Bigonha (UFMG)\n
+- Kecia A. M. Ferreira (CEFET-MG)\n\n
 
-The FindSmell's source code can be found in the following link:\n\n
+The Design Pattern Smell's source code can be found in the following link:\n\n
 
-https://github.com/BrunoLSousa/FindSmells
+https://github.com/BrunoLSousa/DesignPatternSmell.git

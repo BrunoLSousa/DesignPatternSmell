@@ -330,6 +330,11 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuHelp.setText(this.properties.getProperty("menu4"));
 
         jMenuItemTutorial.setText(this.properties.getProperty("submenu4_1"));
+        jMenuItemTutorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemTutorialActionPerformed(evt);
+            }
+        });
         jMenuHelp.add(jMenuItemTutorial);
 
         jMenuItemAboutAssociationRules.setText(this.properties.getProperty("submenu4_2"));
@@ -519,6 +524,11 @@ public class DPSForm extends javax.swing.JFrame {
         AboutEquationsForm equationScreen = new AboutEquationsForm();
         equationScreen.setVisible(true);
     }//GEN-LAST:event_jMenuItemAboutAssociationRulesActionPerformed
+
+    private void jMenuItemTutorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemTutorialActionPerformed
+        TutorialForm tutorialScreen = new TutorialForm();
+        tutorialScreen.setVisible(true);
+    }//GEN-LAST:event_jMenuItemTutorialActionPerformed
 
     private void clearFields() {
         this.data.clear();
