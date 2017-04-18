@@ -18,6 +18,7 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -35,12 +36,14 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     /**
      * Creates new form ResultsArtifactsForm
      */
-    public ResultsArtifactsForm() {
+    public ResultsArtifactsForm(JFrame mainScreen) {
         this.data = Data.getInstance();
         this.properties = PropertiesManager.getInstance().getProperties();
         this.intersection = new ArrayList<>();
         this.nameDesignPattern = new ArrayList<>();
+        this.mainScreen = mainScreen;
         initComponents();
+        this.setLocationRelativeTo(null);
         updatePages();
         verifyStateButtons();
         updateHighlighter();
@@ -79,6 +82,10 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         jButtonNext = new javax.swing.JButton();
         jLabelHighlighter = new javax.swing.JLabel();
         jButtonExport = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanelMain.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -258,7 +265,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                 .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSelect)
                     .addComponent(jButtonFilter))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("DetectionStrategies"));
@@ -335,13 +342,20 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                     .addComponent(jButtonPrevious)
                     .addComponent(jButtonNext)
                     .addComponent(jLabelHighlighter))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jButtonExport.setText("Export");
         jButtonExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonExportActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText(this.properties.getProperty("buttonBack"));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -352,10 +366,13 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
             .addGroup(jPanelMainLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanelMainLayout.createSequentialGroup()
+                        .addComponent(jPanelFilter, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelMainLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonExport)
                         .addGap(8, 8, 8)))
                 .addContainerGap())
@@ -368,7 +385,9 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonExport)
+                .addGroup(jPanelMainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExport)
+                    .addComponent(jButton1))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -382,7 +401,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 41, Short.MAX_VALUE))
+                .addGap(0, 35, Short.MAX_VALUE))
         );
 
         pack();
@@ -547,6 +566,11 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         updatePages();
         update();
     }//GEN-LAST:event_jButtonFilterActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setVisible(false);
+        this.mainScreen.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public int toExcel(JTable table, File file) {
         try {
@@ -738,6 +762,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonExport;
     private javax.swing.JButton jButtonFilter;
     private javax.swing.JButton jButtonNext;
@@ -772,4 +797,5 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     private static final int LIMIT = 20;
     private int pageCurrent = 1;
     private int pages;
+    private JFrame mainScreen;
 }

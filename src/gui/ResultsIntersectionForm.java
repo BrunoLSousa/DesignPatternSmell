@@ -19,6 +19,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -35,11 +36,13 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     /**
      * Creates new form ResultsIntersectionForm
      */
-    public ResultsIntersectionForm() {
+    public ResultsIntersectionForm(JFrame mainScreen) {
         this.properties = PropertiesManager.getInstance().getProperties();
         this.data = Data.getInstance();
+        this.mainScreen = mainScreen;
         getResults();
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -63,6 +66,10 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         jButtonExportTable = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabelAmountBadSmell = new javax.swing.JLabel();
+        jButtonBack = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanelIntersectionData.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAmountIntersectionInstances")));
         jPanelIntersectionData.setToolTipText("");
@@ -121,6 +128,13 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             jLabelAmountBadSmell.setText(amountBadSmell.size() + " métodos");
         }
 
+        jButtonBack.setText(this.properties.getProperty("buttonBack"));
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelIntersectionDataLayout = new javax.swing.GroupLayout(jPanelIntersectionData);
         jPanelIntersectionData.setLayout(jPanelIntersectionDataLayout);
         jPanelIntersectionDataLayout.setHorizontalGroup(
@@ -130,7 +144,8 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                 .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 902, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelIntersectionDataLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonExportTable))
                     .addGroup(jPanelIntersectionDataLayout.createSequentialGroup()
                         .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,7 +188,9 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
-                .addComponent(jButtonExportTable)
+                .addGroup(jPanelIntersectionDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExportTable)
+                    .addComponent(jButtonBack))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
@@ -216,6 +233,11 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportIntersection"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportTableActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        this.setVisible(false);
+        this.mainScreen.setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     public int toExcel(JTable table, File file) {
         try {
@@ -316,6 +338,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonExportTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -333,4 +356,5 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
     private TreeMap<String, Set<Method>> intersectionMethod;
     private Data data;
     private Properties properties;
+    private JFrame mainScreen;
 }

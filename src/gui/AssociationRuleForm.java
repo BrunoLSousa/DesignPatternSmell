@@ -19,6 +19,7 @@ import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -38,11 +39,13 @@ public class AssociationRuleForm extends javax.swing.JFrame {
     /**
      * Creates new form AssociationRuleForm
      */
-    public AssociationRuleForm() {
+    public AssociationRuleForm(JFrame mainScreen) {
         this.data = Data.getInstance();
         this.properties = PropertiesManager.getInstance().getProperties();
         this.rules = new HashMap<>();
+        this.mainScreen = mainScreen;
         initComponents();
+        this.setLocationRelativeTo(null);
         checkAll();
         initializeFilter();
     }
@@ -72,6 +75,10 @@ public class AssociationRuleForm extends javax.swing.JFrame {
         jButtonExport = new javax.swing.JButton();
         jLabelAssociation = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButtonBack = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanelMain3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -212,6 +219,13 @@ public class AssociationRuleForm extends javax.swing.JFrame {
 
         jLabel3.setText("Design Pattern => " + this.data.getNameBadSmell());
 
+        jButtonBack.setText(this.properties.getProperty("buttonBack"));
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelAssociationRulesResultsLayout = new javax.swing.GroupLayout(jPanelAssociationRulesResults);
         jPanelAssociationRulesResults.setLayout(jPanelAssociationRulesResultsLayout);
         jPanelAssociationRulesResultsLayout.setHorizontalGroup(
@@ -225,12 +239,13 @@ public class AssociationRuleForm extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanelAssociationRulesResultsLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
+                        .addGroup(jPanelAssociationRulesResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAssociationRulesResultsLayout.createSequentialGroup()
+                                .addComponent(jButtonBack)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonExport)))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAssociationRulesResultsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonExport)
-                .addContainerGap())
         );
         jPanelAssociationRulesResultsLayout.setVerticalGroup(
             jPanelAssociationRulesResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,7 +257,9 @@ public class AssociationRuleForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButtonExport)
+                .addGroup(jPanelAssociationRulesResultsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExport)
+                    .addComponent(jButtonBack))
                 .addGap(6, 6, 6))
         );
 
@@ -264,7 +281,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
                 .addComponent(jPanelDataAssociatonRule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanelAssociationRulesResults, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -275,7 +292,9 @@ public class AssociationRuleForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanelMain3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
         );
 
         pack();
@@ -345,6 +364,11 @@ public class AssociationRuleForm extends javax.swing.JFrame {
             this.filter.add(AssociationRuleEnum.CONVICTION);
         }
     }//GEN-LAST:event_jCheckBoxConvictionActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        this.setVisible(false);
+        this.mainScreen.setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     public int toExcel(JTable table, File file) {
         try {
@@ -452,6 +476,7 @@ public class AssociationRuleForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonCalculate;
     private javax.swing.JButton jButtonExport;
     private javax.swing.JCheckBox jCheckBoxConfidence;
@@ -473,4 +498,5 @@ public class AssociationRuleForm extends javax.swing.JFrame {
     private Data data;
     private Properties properties;
     private HashMap<String, HashMap<String, Double>> rules;
+    private JFrame mainScreen;
 }

@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -33,11 +34,13 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
     /**
      * Creates new form DesignPatternsInstancesForm
      */
-    public DesignPatternsInstancesForm() {
+    public DesignPatternsInstancesForm(JFrame mainScreen) {
         this.properties = PropertiesManager.getInstance().getProperties();
         this.data = Data.getInstance();
         this.designPatterns = new TreeMap<>();
+        this.mainScreen = mainScreen;
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -57,6 +60,10 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
         jLabelTotalInstances = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelNameProject = new javax.swing.JLabel();
+        jButtonBack = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAmountInstances")));
 
@@ -89,12 +96,20 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
         jLabelNameProject.setText("jLabel3");
         jLabelNameProject.setText(this.data.getNameProject());
 
+        jButtonBack.setText(this.properties.getProperty("buttonBack"));
+        jButtonBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonBack)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonExport))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,7 +138,9 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonExport)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonExport)
+                    .addComponent(jButtonBack))
                 .addContainerGap())
         );
 
@@ -166,6 +183,11 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("errorExportAmountInstances"), this.properties.getProperty("titleError"), JOptionPane.ERROR_MESSAGE, null);
         }
     }//GEN-LAST:event_jButtonExportActionPerformed
+
+    private void jButtonBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackActionPerformed
+        this.setVisible(false);
+        this.mainScreen.setVisible(true);
+    }//GEN-LAST:event_jButtonBackActionPerformed
 
     public int toExcel(JTable table, File file) {
         try {
@@ -230,6 +252,7 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonExport;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -242,5 +265,6 @@ public class DesignPatternsInstancesForm extends javax.swing.JFrame {
     private Properties properties;
     private TreeMap<String, DesignPattern> designPatterns;
     private Data data;
+    private JFrame mainScreen;
 
 }

@@ -35,6 +35,7 @@ public class DPSForm extends javax.swing.JFrame {
         this.data = Data.getInstance();
         this.properties = PropertiesManager.getInstance().getProperties();
         initComponents();
+        this.setLocationRelativeTo(null);
         enablePanel(false);
         this.loadingDialog.add(progress);
         this.loadingDialog.pack();
@@ -83,6 +84,7 @@ public class DPSForm extends javax.swing.JFrame {
         jMenuItemAssociationRules = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanelBadSmell.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelBadSmell")));
 
@@ -429,7 +431,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jMenuInstancesDesignPatternActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuInstancesDesignPatternActionPerformed
         if (!this.data.getDesignPatterns().isEmpty()) {
-            DesignPatternsInstancesForm designPatternsInstances = new DesignPatternsInstancesForm();
+            DesignPatternsInstancesForm designPatternsInstances = new DesignPatternsInstancesForm(this);
+            this.setVisible(false);
             designPatternsInstances.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningInstances"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
@@ -449,7 +452,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jMenuItemViewIntersectionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewIntersectionActionPerformed
         if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
-            ResultsIntersectionForm screenIntersection = new ResultsIntersectionForm();
+            ResultsIntersectionForm screenIntersection = new ResultsIntersectionForm(this);
+            this.setVisible(false);
             screenIntersection.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningViewIntersection"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
@@ -458,7 +462,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jMenuItemViewArtifactsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemViewArtifactsActionPerformed
         if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
-            ResultsArtifactsForm results = new ResultsArtifactsForm();
+            ResultsArtifactsForm results = new ResultsArtifactsForm(this);
+            this.setVisible(false);
             results.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningViewAffectedArtifacts"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
@@ -467,7 +472,8 @@ public class DPSForm extends javax.swing.JFrame {
 
     private void jMenuItemAssociationRulesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAssociationRulesActionPerformed
         if (!this.data.getDesignPatterns().isEmpty() && (!this.data.getIntersectionType().isEmpty()) || !this.data.getIntersectionMethod().isEmpty()) {
-            AssociationRuleForm statistics = new AssociationRuleForm();
+            AssociationRuleForm statistics = new AssociationRuleForm(this);
+            this.setVisible(false);
             statistics.setVisible(true);
         }else{
             JOptionPane.showMessageDialog(this, this.properties.getProperty("warningAssociationRules"), this.properties.getProperty("titleWarning"), JOptionPane.WARNING_MESSAGE, null);
