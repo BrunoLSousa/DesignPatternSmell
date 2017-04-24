@@ -460,6 +460,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxVisitorActionPerformed
 
     private void jCheckBoxTemplateMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxTemplateMethodActionPerformed
@@ -468,6 +469,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxTemplateMethodActionPerformed
 
     private void jCheckBoxStateStrategyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxStateStrategyActionPerformed
@@ -476,6 +478,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxStateStrategyActionPerformed
 
     private void jCheckBoxSingletonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSingletonActionPerformed
@@ -484,6 +487,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxSingletonActionPerformed
 
     private void jCheckBoxProxy2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxProxy2ActionPerformed
@@ -492,6 +496,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxProxy2ActionPerformed
 
     private void jCheckBoxProxyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxProxyActionPerformed
@@ -500,6 +505,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxProxyActionPerformed
 
     private void jCheckBoxPrototypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxPrototypeActionPerformed
@@ -508,6 +514,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxPrototypeActionPerformed
 
     private void jCheckBoxObserverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxObserverActionPerformed
@@ -516,6 +523,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxObserverActionPerformed
 
     private void jCheckBoxFactoryMethodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxFactoryMethodActionPerformed
@@ -524,6 +532,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxFactoryMethodActionPerformed
 
     private void jCheckBoxDecoratorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxDecoratorActionPerformed
@@ -532,6 +541,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxDecoratorActionPerformed
 
     private void jCheckBoxCompositeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCompositeActionPerformed
@@ -540,6 +550,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxCompositeActionPerformed
 
     private void jCheckBoxBridgeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxBridgeActionPerformed
@@ -548,6 +559,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxBridgeActionPerformed
 
     private void jCheckBoxAdapterCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAdapterCommandActionPerformed
@@ -556,6 +568,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         } else {
             this.filter.remove(evt.getActionCommand());
         }
+        verifyChecks();
     }//GEN-LAST:event_jCheckBoxAdapterCommandActionPerformed
 
     private void jButtonFilterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFilterActionPerformed
@@ -610,6 +623,16 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         }
 
         return 0;
+    }
+    
+    private void verifyChecks(){
+        if(!filter.isEmpty()){
+            this.selectedAll = true;
+            changeNameButtonSelect();
+        }else {
+            this.selectedAll = false;
+            changeNameButtonSelect();
+        }
     }
 
     private void update() {
