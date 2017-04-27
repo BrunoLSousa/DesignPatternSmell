@@ -6,13 +6,7 @@
 package gui;
 
 import designpatterns.config.PropertiesManager;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -26,7 +20,6 @@ public class AboutForm extends javax.swing.JFrame {
     public AboutForm() {
         this.properties = PropertiesManager.getInstance().getProperties();
         initComponents();
-        loadText();
         this.setLocationRelativeTo(null);
         this.setTitle(this.properties.getProperty("titleAbout"));
     }
@@ -55,22 +48,23 @@ public class AboutForm extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
+                .addGap(241, 241, 241)
                 .addComponent(jLabel1)
-                .addContainerGap(249, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
+        jTextArea1.setText("Design Pattern Smell 1.0 is a tool for detecting co-occurrences between design pattern and bad smell. The tool receives as input XML files containing the design patterns instances and a CSV file containing the code artifacts with bad smell. Design Pattern Smell performs the parser of this information and then a data crossing to detect the co-occurrences. In addition, Design Pattern Smell allows the user to apply association rules on the  data collected to identify the intensity of  the co-occurrence in each design pattern, and to export reports for analysis and future manipulations. Design Pattern Smell supports co-occurrence detection in 14 GOF catalog design patterns:\n  - Adapter\n  - Bridge\n  - Command\n  - Composite\n  - Decorator\n  - Factory Method\n  - Observer\n  - Prototype\n  - Proxy\n  - State\n  - Singleton\n  - Strategy\n  - Template Method\n  - Visitor\n\nDesign Pattern Smell was developed in 2017 by:\n  - Bruno L. Sousa (UFMG)\n  - Mariza A. S. Bigonha (UFMG)\n  - Kecia A. M. Ferreira (CEFET-MG)\n\nThe Design Pattern Smell's source code can be found in the following link:\n\nhttps://github.com/BrunoLSousa/DesignPatternSmell.git");
         jScrollPane1.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -96,32 +90,6 @@ public class AboutForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void loadText(){
-        BufferedReader bufferedReader = null;
-        String description = "";
-        try {
-            bufferedReader = new BufferedReader(new FileReader(getClass().getResource("../designpatterns/config/about.txt").getFile()));
-            int index = 0;
-            while (bufferedReader.ready()) {
-                description += bufferedReader.readLine();
-                description = description.replace("\\n", "\n");
-            }
-            bufferedReader.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(AboutForm.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(AboutForm.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                bufferedReader.close();
-            } catch (IOException ex) {
-                Logger.getLogger(AboutForm.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        this.jTextArea1.setText(description);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

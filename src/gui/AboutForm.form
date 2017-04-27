@@ -52,18 +52,18 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="249" max="32767" attributes="0"/>
+                  <EmptySpace pref="253" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -92,6 +92,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="text" type="java.lang.String" value="Design Pattern Smell 1.0 is a tool for detecting co-occurrences between design pattern and bad smell. The tool receives as input XML files containing the design patterns instances and a CSV file containing the code artifacts with bad smell. Design Pattern Smell performs the parser of this information and then a data crossing to detect the co-occurrences. In addition, Design Pattern Smell allows the user to apply association rules on the  data collected to identify the intensity of  the co-occurrence in each design pattern, and to export reports for analysis and future manipulations. Design Pattern Smell supports co-occurrence detection in 14 GOF catalog design patterns:&#xa;  - Adapter&#xa;  - Bridge&#xa;  - Command&#xa;  - Composite&#xa;  - Decorator&#xa;  - Factory Method&#xa;  - Observer&#xa;  - Prototype&#xa;  - Proxy&#xa;  - State&#xa;  - Singleton&#xa;  - Strategy&#xa;  - Template Method&#xa;  - Visitor&#xa;&#xa;Design Pattern Smell was developed in 2017 by:&#xa;  - Bruno L. Sousa (UFMG)&#xa;  - Mariza A. S. Bigonha (UFMG)&#xa;  - Kecia A. M. Ferreira (CEFET-MG)&#xa;&#xa;The Design Pattern Smell&apos;s source code can be found in the following link:&#xa;&#xa;https://github.com/BrunoLSousa/DesignPatternSmell.git"/>
           </Properties>
         </Component>
       </SubComponents>
