@@ -55,16 +55,16 @@ public class AboutEquationsForm extends javax.swing.JFrame {
         jPanelTitle.setLayout(jPanelTitleLayout);
         jPanelTitleLayout.setHorizontalGroup(
             jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelTitleLayout.createSequentialGroup()
-                .addContainerGap(141, Short.MAX_VALUE)
+            .addGroup(jPanelTitleLayout.createSequentialGroup()
+                .addGap(180, 180, 180)
                 .addComponent(jLabelAbout)
-                .addGap(133, 133, 133))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         jPanelTitleLayout.setVerticalGroup(
             jPanelTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelAbout)
+                .addComponent(jLabelAbout, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
