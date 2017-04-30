@@ -38,6 +38,7 @@ public class TutorialForm extends javax.swing.JFrame {
         jTextAreaText = new javax.swing.JTextArea();
 
         setTitle("FindSmells");
+        setResizable(false);
 
         jPanelMain.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -73,7 +74,7 @@ public class TutorialForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, 110, Short.MAX_VALUE)
         );
 
         pack();

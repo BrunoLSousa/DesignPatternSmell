@@ -48,6 +48,8 @@ public class AboutEquationsForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
+        setResizable(false);
+
         jLabelAbout.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabelAbout.setText("About Association Rules");
 
