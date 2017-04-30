@@ -94,9 +94,9 @@ public class DPSForm extends javax.swing.JFrame {
 
         jPanelBadSmell.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelBadSmell")));
 
-        jLabelBadSmellName.setText(this.properties.getProperty("labelBadSmell"));
+        jLabelBadSmellName.setText(this.properties.getProperty("labelBadSmell") + ":");
 
-        jLabelCsvFile.setText(this.properties.getProperty("labelCSVFile"));
+        jLabelCsvFile.setText(this.properties.getProperty("labelCSVFile") + ":");
 
         jButtonSelectCSV.setText(this.properties.getProperty("buttonSelectCSV"));
         jButtonSelectCSV.addActionListener(new java.awt.event.ActionListener() {
@@ -112,7 +112,7 @@ public class DPSForm extends javax.swing.JFrame {
             }
         });
 
-        jLabelTypeBadSmell.setText(this.properties.getProperty("labelType"));
+        jLabelTypeBadSmell.setText(this.properties.getProperty("labelType") + ":");
 
         jComboBoxTypeBadSmell.setModel(new javax.swing.DefaultComboBoxModel(new String[] { this.properties.getProperty("optionClass"), this.properties.getProperty("optionMethod")}));
 
@@ -183,9 +183,9 @@ public class DPSForm extends javax.swing.JFrame {
 
         jPanelDesignPattern.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelDesignPattern")));
 
-        jLabelProjectName.setText(this.properties.getProperty("labelProject"));
+        jLabelProjectName.setText(this.properties.getProperty("labelProject") + ":");
 
-        jLabelXmlFiles.setText(this.properties.getProperty("labelFileXML"));
+        jLabelXmlFiles.setText(this.properties.getProperty("labelFileXML") + ":");
 
         jButtonSelectXml.setText(this.properties.getProperty("buttonSelectXML"));
         jButtonSelectXml.addActionListener(new java.awt.event.ActionListener() {

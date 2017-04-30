@@ -266,7 +266,7 @@
         <Component class="javax.swing.JLabel" name="jLabelBadSmellName">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;labelBadSmell&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;labelBadSmell&quot;) + &quot;:&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -275,7 +275,7 @@
         <Component class="javax.swing.JLabel" name="jLabelCsvFile">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;labelCSVFile&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;labelCSVFile&quot;) + &quot;:&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -302,7 +302,7 @@
         <Component class="javax.swing.JLabel" name="jLabelTypeBadSmell">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;labelType&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;labelType&quot;) + &quot;:&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -409,7 +409,7 @@
         <Component class="javax.swing.JLabel" name="jLabelProjectName">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;labelProject&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;labelProject&quot;) + &quot;:&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
@@ -418,7 +418,7 @@
         <Component class="javax.swing.JLabel" name="jLabelXmlFiles">
           <Properties>
             <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="this.properties.getProperty(&quot;labelFileXML&quot;)" type="code"/>
+              <Connection code="this.properties.getProperty(&quot;labelFileXML&quot;) + &quot;:&quot;" type="code"/>
             </Property>
           </Properties>
         </Component>
