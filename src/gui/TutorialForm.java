@@ -46,7 +46,7 @@ public class TutorialForm extends javax.swing.JFrame {
         jTextAreaText.setColumns(20);
         jTextAreaText.setLineWrap(true);
         jTextAreaText.setRows(5);
-        jTextAreaText.setText("\nA demonstration video of Design Pattern Smell 1.0 is available on:\n\nhttp://www2.dcc.ufmg.br/laboratorios/llp/Products/Products/indexProducts.html");
+        jTextAreaText.setText("\nA demonstration video of Design Pattern Smell 1.0 is available on:\n\nhttp://www2.dcc.ufmg.br/laboratorios/llp/Products/indexProducts.html");
         jScrollPane1.setViewportView(jTextAreaText);
 
         javax.swing.GroupLayout jPanelMainLayout = new javax.swing.GroupLayout(jPanelMain);

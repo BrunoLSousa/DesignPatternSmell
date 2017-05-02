@@ -75,7 +75,7 @@
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="&#xa;A demonstration video of Design Pattern Smell 1.0 is available on:&#xa;&#xa;http://www2.dcc.ufmg.br/laboratorios/llp/Products/Products/indexProducts.html"/>
+                <Property name="text" type="java.lang.String" value="&#xa;A demonstration video of Design Pattern Smell 1.0 is available on:&#xa;&#xa;http://www2.dcc.ufmg.br/laboratorios/llp/Products/indexProducts.html"/>
               </Properties>
             </Component>
           </SubComponents>
