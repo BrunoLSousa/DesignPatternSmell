@@ -38,6 +38,11 @@ manipulations. Design Pattern Smell supports co-occurrence detection in 14 GOF c
 - **Data Management;**
 - **Help;**
 
+### Versão 1.1
+- **Parser support for instances of the Adapter and Command design patterns separately;**
+- **Parser support for instances of the State and Strategy design patterns separately;**
+- **Parser support for instances of the Chain of Responsibility design pattern;**
+
 ## Links
 
 An example video usage has been made available on YouTube. It can be found at the following link:
@@ -45,7 +50,7 @@ An example video usage has been made available on YouTube. It can be found at th
 
 For more information, visit the Design Pattern Smell tool page. There, you can find the documentation and the its jar executable file. 
 The page can be found at the following link:
-- **http://www2.dcc.ufmg.br/laboratorios/llp/Products/indexProducts.html**
+- **http://llp.dcc.ufmg.br/Products/indexProducts.html**
 
 ## Design Pattern Smell Installation Requirements
 
