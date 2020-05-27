@@ -5,8 +5,11 @@
  */
 package factory;
 
+import designpatterns.Adapter;
 import designpatterns.AdapterCommand;
 import designpatterns.Bridge;
+import designpatterns.ChainResponsability;
+import designpatterns.Command;
 import designpatterns.Composite;
 import designpatterns.Decorator;
 import designpatterns.DesignPattern;
@@ -16,7 +19,9 @@ import designpatterns.Prototype;
 import designpatterns.Proxy;
 import designpatterns.Proxy2;
 import designpatterns.Singleton;
+import designpatterns.State;
 import designpatterns.StateStrategy;
+import designpatterns.Strategy;
 import designpatterns.TemplateMethod;
 import designpatterns.Visitor;
 import org.jdom2.Element;
@@ -44,6 +49,12 @@ public class DesignPatternFactoryImpl implements DesignPatternFactory{
             case "(Object)Adapter-Command":
                 designPattern = new AdapterCommand(name);
                 break;
+            case "(Object)Adapter":
+                designPattern = new Adapter(name);
+                break;
+            case "Command":
+                designPattern = new Command(name);
+                break;
             case "Composite":
                 designPattern = new Composite(name);
                 break;
@@ -56,8 +67,17 @@ public class DesignPatternFactoryImpl implements DesignPatternFactory{
             case "State-Strategy":
                 designPattern = new StateStrategy(name);
                 break;
+            case "State":
+                designPattern = new State(name);
+                break;
+            case "Strategy":
+                designPattern = new Strategy(name);
+                break;
             case "Bridge":
                 designPattern = new Bridge(name);
+                break;
+            case "Chain of Responsibility":
+                designPattern = new ChainResponsability(name);
                 break;
             case "Template Method":
                 designPattern = new TemplateMethod(name);

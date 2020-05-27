@@ -132,7 +132,10 @@ public class IntersectionParser extends Thread{
     private void initializeMapType(){
         this.intersectionType = new HashMap<>();
         this.intersectionType.put("(Object)Adapter-Command", new LinkedHashSet<Type>());
+        this.intersectionType.put("(Object)Adapter", new LinkedHashSet<Type>());
         this.intersectionType.put("Bridge", new LinkedHashSet<Type>());
+        this.intersectionType.put("Chain of Responsibility", new LinkedHashSet<Type>());
+        this.intersectionType.put("Command", new LinkedHashSet<Type>());
         this.intersectionType.put("Composite", new LinkedHashSet<Type>());
         this.intersectionType.put("Decorator", new LinkedHashSet<Type>());
         this.intersectionType.put("Factory Method", new LinkedHashSet<Type>());
@@ -142,6 +145,8 @@ public class IntersectionParser extends Thread{
         this.intersectionType.put("Proxy2", new LinkedHashSet<Type>());
         this.intersectionType.put("Singleton", new LinkedHashSet<Type>());
         this.intersectionType.put("State-Strategy", new LinkedHashSet<Type>());
+        this.intersectionType.put("State", new LinkedHashSet<Type>());
+        this.intersectionType.put("Strategy", new LinkedHashSet<Type>());
         this.intersectionType.put("Template Method", new LinkedHashSet<Type>());
         this.intersectionType.put("Visitor", new LinkedHashSet<Type>());
     }
@@ -149,7 +154,10 @@ public class IntersectionParser extends Thread{
     private void initializeMapMethod(){
         this.intersectionMethod = new HashMap<>();
         this.intersectionMethod.put("(Object)Adapter-Command", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("(Object)Adapter", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Bridge", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Chain of Responsibility", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Command", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Composite", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Decorator", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Factory Method", new LinkedHashSet<Method>());
@@ -159,6 +167,8 @@ public class IntersectionParser extends Thread{
         this.intersectionMethod.put("Proxy2", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Singleton", new LinkedHashSet<Method>());
         this.intersectionMethod.put("State-Strategy", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("State", new LinkedHashSet<Method>());
+        this.intersectionMethod.put("Strategy", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Template Method", new LinkedHashSet<Method>());
         this.intersectionMethod.put("Visitor", new LinkedHashSet<Method>());
     }
