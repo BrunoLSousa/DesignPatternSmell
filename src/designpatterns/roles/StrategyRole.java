@@ -13,33 +13,33 @@ import java.util.List;
  *
  * @author bruno
  */
-public class StateStrategyRole extends Type {
+public class StrategyRole extends Type {
 
-    private List<Context> contextStateStrategy;
+    private List<Context> contextStrategy;
 
-    public StateStrategyRole(String completeName) {
+    public StrategyRole(String completeName) {
         super(completeName);
-        contextStateStrategy = new ArrayList<>();
+        contextStrategy = new ArrayList<>();
     }
 
-    public List<Context> getContextStateStrategy() {
-        return this.contextStateStrategy;
+    public List<Context> getContextStrategy() {
+        return this.contextStrategy;
     }
 
-    public Context lastContextStateStrategy() {
-        int size = this.contextStateStrategy.size();
-        return this.contextStateStrategy.get(size - 1);
+    public Context lastContextStrategy() {
+        int size = this.contextStrategy.size();
+        return this.contextStrategy.get(size - 1);
     }
 
-    public void addStateStrategy(Context contextStateStrategy) {
-        if (contextStateStrategy != null) {
-            this.contextStateStrategy.add(contextStateStrategy);
+    public void addStrategy(Context contextStrategy) {
+        if (contextStrategy != null) {
+            this.contextStrategy.add(contextStrategy);
         }
     }
 
     @Override
     public String toString() {
-        return "State/Strategy";
+        return "Strategy";
     }
 
 }
