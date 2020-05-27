@@ -48,9 +48,16 @@ manipulations. Design Pattern Smell supports co-occurrence detection in 14 GOF c
 An example video usage has been made available on YouTube. It can be found at the following link:
 - **https://youtu.be/hFwyId9nHnM**
 
-For more information, visit the Design Pattern Smell tool page. There, you can find the documentation and the its jar executable file. 
-The page can be found at the following link:
+For more information, visit the Design Pattern Smell tool page. There, you can find the tool documentation file. The page can be found at the following link:
 - **http://llp.dcc.ufmg.br/Products/indexProducts.html**
+
+The jar executable files can be found at the following link:
+
+- **Versão 1.0**
+  - **https://github.com/BrunoLSousa/DesignPatternSmell/blob/master/releases/dps-1.0.jar**
+
+- **Versão 1.1**
+  - **https://github.com/BrunoLSousa/DesignPatternSmell/blob/master/releases/dps1.1.jar**
 
 ## Design Pattern Smell Installation Requirements
 
