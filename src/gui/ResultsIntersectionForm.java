@@ -294,7 +294,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         String[][] data = new String[badSmellPerPattern.size()][4];
         for (Set<designpatterns.structure.Type> list : badSmellPerPattern) {
             String namePattern = String.valueOf(namePatterns[index]);
-            int amount = Data.getInstance().getDesignPatternByKey(namePattern).getSumClass();
+            int amount = (Data.getInstance().getDesignPatternByKey(namePattern) != null) ? Data.getInstance().getDesignPatternByKey(namePattern).getSumClass() : 0;
             int classWithBadSmell = list.size();
             Float percentage = (amount > 0) ? (Float.parseFloat(String.valueOf(classWithBadSmell)) / Float.parseFloat(String.valueOf(amount))) * 100 : 0;
             data[index] = new String[]{namePattern, String.valueOf(amount), String.valueOf(classWithBadSmell), String.format("%.2f", percentage)};
@@ -310,7 +310,7 @@ public class ResultsIntersectionForm extends javax.swing.JFrame {
         String[][] data = new String[badSmellPerPattern.size()][4];
         for (Set<Method> list : badSmellPerPattern) {
             String namePattern = String.valueOf(namePatterns[index]);
-            int amount = Data.getInstance().getDesignPatternByKey(namePattern).getSumMethod();
+            int amount = (Data.getInstance().getDesignPatternByKey(namePattern) != null) ? Data.getInstance().getDesignPatternByKey(namePattern).getSumMethod() : 0;
             int methodsWithBadSmell = list.size();
             Float percentage = (amount > 0) ? (Float.parseFloat(String.valueOf(methodsWithBadSmell)) / Float.parseFloat(String.valueOf(amount))) * 100 : 0;
             data[index] = new String[]{namePattern, String.valueOf(amount), String.valueOf(methodsWithBadSmell), String.format("%.2f", percentage)};

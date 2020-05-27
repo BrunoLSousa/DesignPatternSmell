@@ -76,6 +76,11 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         jCheckBoxTemplateMethod = new javax.swing.JCheckBox();
         jCheckBoxVisitor = new javax.swing.JCheckBox();
         jButtonSelect = new javax.swing.JButton();
+        jCheckBoxAdapter = new javax.swing.JCheckBox();
+        jCheckBoxChainResponsability = new javax.swing.JCheckBox();
+        jCheckBoxCommand = new javax.swing.JCheckBox();
+        jCheckBoxState = new javax.swing.JCheckBox();
+        jCheckBoxStrategy = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableArtifacts = new javax.swing.JTable();
@@ -197,48 +202,95 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
             }
         });
 
+        jCheckBoxAdapter.setText("(Object)Adapter");
+        jCheckBoxAdapter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxAdapterActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxChainResponsability.setText("Chain of Responsibility");
+        jCheckBoxChainResponsability.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxChainResponsabilityActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxCommand.setText("Command");
+        jCheckBoxCommand.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxCommandActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxState.setText("State");
+        jCheckBoxState.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxStateActionPerformed(evt);
+            }
+        });
+
+        jCheckBoxStrategy.setText("Strategy");
+        jCheckBoxStrategy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxStrategyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelFilterLayout = new javax.swing.GroupLayout(jPanelFilter);
         jPanelFilter.setLayout(jPanelFilterLayout);
         jPanelFilterLayout.setHorizontalGroup(
             jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelFilterLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelFilterLayout.createSequentialGroup()
-                        .addComponent(jButtonSelect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButtonFilter))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFilterLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxSingleton)
-                        .addGap(93, 93, 93)
-                        .addComponent(jCheckBoxStateStrategy)
-                        .addGap(84, 84, 84)
-                        .addComponent(jCheckBoxTemplateMethod)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBoxVisitor))
-                    .addGroup(jPanelFilterLayout.createSequentialGroup()
-                        .addComponent(jCheckBoxAdapterCommand)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jCheckBoxDecorator))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFilterLayout.createSequentialGroup()
                         .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanelFilterLayout.createSequentialGroup()
-                                .addComponent(jCheckBoxBridge)
-                                .addGap(85, 85, 85)
-                                .addComponent(jCheckBoxComposite))
-                            .addGroup(jPanelFilterLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jCheckBoxFactoryMethod)
-                                .addGap(56, 56, 56)
+                                .addGap(9, 9, 9)
                                 .addComponent(jCheckBoxObserver)
-                                .addGap(55, 55, 55)
+                                .addGap(18, 18, 18)
                                 .addComponent(jCheckBoxPrototype)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                                .addComponent(jCheckBoxProxy)))
-                        .addGap(61, 61, 61)
-                        .addComponent(jCheckBoxProxy2)
-                        .addGap(42, 42, 42)))
-                .addContainerGap())
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBoxProxy)
+                                .addGap(18, 18, 18)
+                                .addComponent(jCheckBoxProxy2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFilterLayout.createSequentialGroup()
+                                .addComponent(jCheckBoxSingleton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxVisitor))
+                            .addGroup(jPanelFilterLayout.createSequentialGroup()
+                                .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jButtonSelect, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFilterLayout.createSequentialGroup()
+                                        .addComponent(jCheckBoxComposite)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBoxDecorator)
+                                            .addGroup(jPanelFilterLayout.createSequentialGroup()
+                                                .addComponent(jCheckBoxStateStrategy)
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jCheckBoxState)
+                                                .addGap(34, 34, 34)
+                                                .addComponent(jCheckBoxStrategy)
+                                                .addGap(52, 52, 52)
+                                                .addComponent(jCheckBoxTemplateMethod))))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelFilterLayout.createSequentialGroup()
+                                        .addComponent(jCheckBoxAdapterCommand)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jCheckBoxAdapter)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jCheckBoxBridge)
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jCheckBoxChainResponsability)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                                .addComponent(jCheckBoxCommand)))
+                        .addContainerGap())
+                    .addGroup(jPanelFilterLayout.createSequentialGroup()
+                        .addGap(653, 653, 653)
+                        .addComponent(jButtonFilter))))
         );
         jPanelFilterLayout.setVerticalGroup(
             jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,10 +299,13 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                 .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxAdapterCommand)
                     .addComponent(jCheckBoxBridge)
-                    .addComponent(jCheckBoxComposite)
-                    .addComponent(jCheckBoxDecorator))
+                    .addComponent(jCheckBoxAdapter)
+                    .addComponent(jCheckBoxCommand)
+                    .addComponent(jCheckBoxChainResponsability))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxComposite)
+                    .addComponent(jCheckBoxDecorator)
                     .addComponent(jCheckBoxFactoryMethod)
                     .addComponent(jCheckBoxObserver)
                     .addComponent(jCheckBoxPrototype)
@@ -258,15 +313,17 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
                     .addComponent(jCheckBoxProxy2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBoxTemplateMethod)
                     .addComponent(jCheckBoxVisitor)
                     .addComponent(jCheckBoxSingleton)
-                    .addComponent(jCheckBoxStateStrategy))
+                    .addComponent(jCheckBoxStateStrategy)
+                    .addComponent(jCheckBoxTemplateMethod)
+                    .addComponent(jCheckBoxStrategy)
+                    .addComponent(jCheckBoxState))
                 .addGap(10, 10, 10)
                 .addGroup(jPanelFilterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonSelect)
                     .addComponent(jButtonFilter))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addGap(0, 30, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(this.properties.getProperty("panelAffectedArtifacts")));
@@ -403,7 +460,7 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanelMain, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 19, Short.MAX_VALUE))
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         pack();
@@ -585,6 +642,51 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         this.mainScreen.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jCheckBoxAdapterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxAdapterActionPerformed
+        if (jCheckBoxAdapter.isSelected()) {
+            this.filter.add(evt.getActionCommand());
+        } else {
+            this.filter.remove(evt.getActionCommand());
+        }
+        verifyChecks();
+    }//GEN-LAST:event_jCheckBoxAdapterActionPerformed
+
+    private void jCheckBoxChainResponsabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxChainResponsabilityActionPerformed
+        if (jCheckBoxChainResponsability.isSelected()) {
+            this.filter.add(evt.getActionCommand());
+        } else {
+            this.filter.remove(evt.getActionCommand());
+        }
+        verifyChecks();
+    }//GEN-LAST:event_jCheckBoxChainResponsabilityActionPerformed
+
+    private void jCheckBoxCommandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxCommandActionPerformed
+        if (jCheckBoxCommand.isSelected()) {
+            this.filter.add(evt.getActionCommand());
+        } else {
+            this.filter.remove(evt.getActionCommand());
+        }
+        verifyChecks();
+    }//GEN-LAST:event_jCheckBoxCommandActionPerformed
+
+    private void jCheckBoxStateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxStateActionPerformed
+        if (jCheckBoxState.isSelected()) {
+            this.filter.add(evt.getActionCommand());
+        } else {
+            this.filter.remove(evt.getActionCommand());
+        }
+        verifyChecks();
+    }//GEN-LAST:event_jCheckBoxStateActionPerformed
+
+    private void jCheckBoxStrategyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxStrategyActionPerformed
+        if (jCheckBoxStrategy.isSelected()) {
+            this.filter.add(evt.getActionCommand());
+        } else {
+            this.filter.remove(evt.getActionCommand());
+        }
+        verifyChecks();
+    }//GEN-LAST:event_jCheckBoxStrategyActionPerformed
+
     public int toExcel(JTable table, File file) {
         try {
             TableModel model = table.getModel();
@@ -753,7 +855,10 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
 
     private void checkAllChecks(boolean enable) {
         this.jCheckBoxAdapterCommand.setSelected(enable);
+        this.jCheckBoxAdapter.setSelected(enable);
         this.jCheckBoxBridge.setSelected(enable);
+        this.jCheckBoxChainResponsability.setSelected(enable);
+        this.jCheckBoxCommand.setSelected(enable);
         this.jCheckBoxComposite.setSelected(enable);
         this.jCheckBoxDecorator.setSelected(enable);
         this.jCheckBoxFactoryMethod.setSelected(enable);
@@ -763,6 +868,8 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         this.jCheckBoxProxy2.setSelected(enable);
         this.jCheckBoxSingleton.setSelected(enable);
         this.jCheckBoxStateStrategy.setSelected(enable);
+        this.jCheckBoxState.setSelected(enable);
+        this.jCheckBoxStrategy.setSelected(enable);
         this.jCheckBoxTemplateMethod.setSelected(enable);
         this.jCheckBoxVisitor.setSelected(enable);
     }
@@ -770,7 +877,10 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     private void initializeFilter() {
         this.filter = new TreeSet<>();
         this.filter.add("(Object)Adapter-Command");
+        this.filter.add("(Object)Adapter");
         this.filter.add("Bridge");
+        this.filter.add("Chain of Responsibility");
+        this.filter.add("Command");
         this.filter.add("Composite");
         this.filter.add("Decorator");
         this.filter.add("Factory Method");
@@ -780,6 +890,8 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
         this.filter.add("Proxy2");
         this.filter.add("Singleton");
         this.filter.add("State-Strategy");
+        this.filter.add("State");
+        this.filter.add("Strategy");
         this.filter.add("Template Method");
         this.filter.add("Visitor");
     }
@@ -791,8 +903,11 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonPrevious;
     private javax.swing.JButton jButtonSelect;
+    private javax.swing.JCheckBox jCheckBoxAdapter;
     private javax.swing.JCheckBox jCheckBoxAdapterCommand;
     private javax.swing.JCheckBox jCheckBoxBridge;
+    private javax.swing.JCheckBox jCheckBoxChainResponsability;
+    private javax.swing.JCheckBox jCheckBoxCommand;
     private javax.swing.JCheckBox jCheckBoxComposite;
     private javax.swing.JCheckBox jCheckBoxDecorator;
     private javax.swing.JCheckBox jCheckBoxFactoryMethod;
@@ -801,7 +916,9 @@ public class ResultsArtifactsForm extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBoxProxy;
     private javax.swing.JCheckBox jCheckBoxProxy2;
     private javax.swing.JCheckBox jCheckBoxSingleton;
+    private javax.swing.JCheckBox jCheckBoxState;
     private javax.swing.JCheckBox jCheckBoxStateStrategy;
+    private javax.swing.JCheckBox jCheckBoxStrategy;
     private javax.swing.JCheckBox jCheckBoxTemplateMethod;
     private javax.swing.JCheckBox jCheckBoxVisitor;
     private javax.swing.JLabel jLabelHighlighter;
